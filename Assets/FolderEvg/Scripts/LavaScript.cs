@@ -12,6 +12,7 @@ public class LavaScript : MonoBehaviour
     void Start()
     {
         currentYPos = transform.position.y;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -27,7 +28,12 @@ public class LavaScript : MonoBehaviour
         if (other.tag == "Player1")
         {
             gameManager.Player1Death();
-            Debug.Log("Burned Cat!");
+            Debug.Log("Lava!");
+        }
+        if (other.tag == "Player2")
+        {
+            gameManager.Player2Death();
+            Debug.Log("Lava!");
         }
     }
 
