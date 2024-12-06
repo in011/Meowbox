@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LavaScript : MonoBehaviour
 {
-    [SerializeField] private float riseSpeed = 1f;
+    [SerializeField] public float riseSpeed = 1f;
     GameManager gameManager;
 
     private float currentYPos;
@@ -36,5 +36,4 @@ public class LavaScript : MonoBehaviour
             Debug.Log("Lava!");
         }
     }
-
 }

@@ -12,7 +12,7 @@ public class Moving : MonoBehaviour
     private float turnSmoothVelocity;
 
     [Header("Jumping")]
-    [SerializeField] float gravity = -9.81f;
+    [SerializeField] float gravity = -50f;
     [SerializeField] float gravityScale = 1f;
     [SerializeField] float jumpHeight = 2f;
     [SerializeField] float jumpCooldown = 1f;
@@ -89,10 +89,10 @@ public class Moving : MonoBehaviour
         if (Input.GetKeyDown(jumpButton) && controller.isGrounded && readyToJump && alive)
         {
             readyToJump = false;
-            velocity = Mathf.Sqrt(jumpHeight * -2f * (gravity * gravityScale));
+            velocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
             Invoke(nameof(ResetJump), jumpCooldown); // вызывает метод ResetJump через jumpCooldown секунд
         }
-        velocity += gravity * gravityScale * Time.deltaTime;
+        velocity += gravity * Time.deltaTime;
         controller.Move(new Vector3(0, velocity, 0) * Time.deltaTime);
     }
 
