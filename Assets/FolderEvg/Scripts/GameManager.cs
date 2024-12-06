@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
     private Moving player2Script;
     private bool player2Dead = false;
 
+    [Header("Falling Blocks")]
     [SerializeField] private GameObject[] blockPrefabs;
-
+    [SerializeField] private bool blockFall = false;
+    [SerializeField] private float timeBetweenBlocks = 3f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,10 @@ public class GameManager : MonoBehaviour
         player1Script = player1.GetComponent<Moving>();
         player2Script = player2.GetComponent<Moving>();
 
-        Invoke(nameof(DropBlock), 3); // Первый блок
+        if (blockFall)
+        {
+            Invoke(nameof(DropBlock), timeBetweenBlocks); // Первый блок
+        }
     }
 
     // Update is called once per frame
@@ -105,6 +110,6 @@ public class GameManager : MonoBehaviour
 
         Instantiate(blockPrefabs[0], new Vector3((float)randXPos, 20f, (float)randZPos), blockPrefabs[0].transform.rotation);
 
-        Invoke(nameof(DropBlock), 3); // Вызываем следующий блок
+        Invoke(nameof(DropBlock), timeBetweenBlocks); // Вызываем следующий блок
     }
 }
