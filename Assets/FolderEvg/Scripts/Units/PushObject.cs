@@ -22,7 +22,7 @@ public class PushObject : MonoBehaviour
             return;
         }
 
-        // Проверяем не стоим ли мы на объекте
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         RaycastHit rayHit;
         GameObject floor;
         if (Physics.Raycast(playerTransform.position, Vector3.down, out rayHit))
@@ -38,7 +38,7 @@ public class PushObject : MonoBehaviour
         }
 
         Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
-        body.velocity = pushDir * pushPower;
+        body.linearVelocity = pushDir * pushPower;
         /*
         Vector3 collisionPoint = hit.point;
         body.AddForceAtPosition(pushDir * pushPower, collisionPoint, ForceMode.Impulse);
