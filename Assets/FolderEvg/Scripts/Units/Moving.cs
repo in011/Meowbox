@@ -61,7 +61,7 @@ public class Moving : MonoBehaviour
         {
             horizontal = Input.GetAxisRaw("Horizontal2");
             vertical = Input.GetAxisRaw("Vertical2");
-            jumpButton = KeyCode.Keypad0;
+            jumpButton = KeyCode.RightControl;
         }
 
     }
