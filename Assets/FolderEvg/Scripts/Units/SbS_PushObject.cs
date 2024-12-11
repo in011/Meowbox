@@ -5,7 +5,7 @@ using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class PushObject : MonoBehaviour
+public class SbS_PushObject : MonoBehaviour
 {
     Rigidbody body;
     GameObject pushObject;
@@ -31,6 +31,7 @@ public class PushObject : MonoBehaviour
             Rigidbody body = rayHit.collider.attachedRigidbody;
             GameObject pushObject = rayHit.collider.gameObject;
 
+            Debug.Log(pushObject.tag);
             if (pushObject.TryGetComponent<BoxCollider>(out BoxCollider collider) && !pushObject.TryGetComponent<Rigidbody>(out Rigidbody rbody))
             {
                 return false;
@@ -59,31 +60,12 @@ public class PushObject : MonoBehaviour
         return true;
     }
 
-    public bool ObjectCollision()
-    {
-        if (Physics.Raycast(transform.position, transform.forward, out rayHit, checkDistance))
-        {
-            Rigidbody body = rayHit.collider.attachedRigidbody;
-            GameObject pushObject = rayHit.collider.gameObject;
-
-            if (FloorObject(pushObject))
-            {
-                return false;
-            }
-            if (pushObject.TryGetComponent<BoxCollider>(out BoxCollider collider) && pushObject.TryGetComponent<Rigidbody>(out Rigidbody rbody))
-            {
-                return true;
-            }
-            return false;
-        }
-        return false;
-    }
-
     private bool FloorObject(GameObject testObject)
     {
         if (Physics.Raycast(transform.position, Vector3.down, out testRayHit))
         {
             floor = testRayHit.collider.gameObject; // hit.collider.gameObject
+            Debug.Log(floor.name);
 
             if (testObject == floor)
             {

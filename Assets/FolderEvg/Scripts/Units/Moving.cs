@@ -6,6 +6,7 @@ public class Moving : MonoBehaviour
 {
     [SerializeField] bool player2;
     CharacterController controller;
+    PushObject pushObjectChecker;
 
     [SerializeField] float speed = 6f;
     [SerializeField] float turnSmoothTime = 0.1f; // скорость поворота в сторону движения
@@ -16,7 +17,11 @@ public class Moving : MonoBehaviour
     [SerializeField] float gravityScale = 1f;
     [SerializeField] float jumpHeight = 2f;
     [SerializeField] float jumpCooldown = 1f;
+    [SerializeField] float pushForce = 1f;
+    [SerializeField] private float forceNeeded = 50f;
+    private float currentForce = 0f;
 
+    Vector3 targetLocation = new Vector3(0f, 0f, 0f);
     private float horizontal;
     private float vertical;
     private KeyCode jumpButton;
@@ -31,7 +36,9 @@ public class Moving : MonoBehaviour
         safePos = transform.position;
 
         controller = gameObject.GetComponent<CharacterController>();
+        pushObjectChecker = gameObject.GetComponent<PushObject>();
     }
+
     void Update()
     {
         if (alive)
@@ -80,7 +87,23 @@ public class Moving : MonoBehaviour
 
             // движение
             // Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; // добавляется для реакции на поворот камеры
-            controller.Move(direction * speed * Time.deltaTime); // заменить direction на moveDir.normalized, чтобы движение реагировало на поворот камеры 
+            if (pushObjectChecker.ObjectCollision())
+            {                
+                currentForce += pushForce;
+
+                Debug.Log("Collision " + currentForce);
+                if(currentForce > forceNeeded)
+                {
+                    pushObjectChecker.ObjectCollisionCheck(direction * 2, true, false);
+                    controller.Move(direction * speed * Time.deltaTime); // заменить direction на moveDir.normalized, чтобы движение реагировало на поворот камеры 
+                    currentForce = 0f;
+                }
+            }
+            else
+            {
+                currentForce = 0f;
+                controller.Move(direction * speed * Time.deltaTime); // заменить direction на moveDir.normalized, чтобы движение реагировало на поворот камеры 
+            }
         }
     }
 

@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    LevelLoader levelLoader;
+
     [SerializeField] private GameObject player1;
     private Moving player1Script;
     private bool player1Dead = false;
     [SerializeField] private GameObject player2;
     private Moving player2Script;
     private bool player2Dead = false;
+
+    public int score = 0;
+    [SerializeField] private int scoreNeeded = 1000;
 
     [Header("Falling Blocks")]
     [SerializeField] private GameObject[] blockPrefabs;
@@ -19,6 +24,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        levelLoader = FindAnyObjectByType<LevelLoader>();
+
         player1Script = player1.GetComponent<Moving>();
         player2Script = player2.GetComponent<Moving>();
 
