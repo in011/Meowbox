@@ -12,7 +12,7 @@ public class PushObject : MonoBehaviour
     bool hasRigidBody;
     RaycastHit rayHit;
     [SerializeField] float checkDistance = 2f;
-    [SerializeField] float pushForce = 14.25f;
+    [SerializeField] float pushForce = 175f; // 14.25f - old
 
     RaycastHit testRayHit;
     GameObject floor;
@@ -59,6 +59,7 @@ public class PushObject : MonoBehaviour
         return true;
     }
 
+    // Возвращает true, если перед нами препятствие, которое можно двигать
     public bool ObjectCollision()
     {
         if (Physics.Raycast(transform.position, transform.forward, out rayHit, checkDistance))
@@ -96,11 +97,9 @@ public class PushObject : MonoBehaviour
 
     private bool TryObjectMove(GameObject moveObject, Rigidbody rbody, Vector3 direction)
     {
-        // rbody.MovePosition(moveObject.transform.position + direction);
-
-        // shellInstance.velocity = m_CurrentLaunchForce * m_FireTransform.forward;
         Debug.Log("Trying to Move!");
-        rbody.linearVelocity = pushForce * direction;
+        //rbody.linearVelocity = pushForce * direction;
+        rbody.AddForce(direction * pushForce, ForceMode.Force);
 
         return false;
     }

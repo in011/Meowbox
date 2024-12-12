@@ -40,5 +40,14 @@ public class LavaScript : MonoBehaviour
             gameManager.score += 1;
             Debug.Log("+1!");
         }
+
+        if (other.tag == "Block")
+        {
+            Block block;
+            if(other.TryGetComponent<Block>(out block))
+            {
+                block.Respawn();
+            }
+        }
     }
 }

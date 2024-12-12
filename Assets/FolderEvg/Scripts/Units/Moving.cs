@@ -13,12 +13,15 @@ public class Moving : MonoBehaviour
     private float turnSmoothVelocity;
 
     [Header("Jumping")]
-    [SerializeField] float gravity = -50f;
+    [SerializeField] float gravity = -25f;
     [SerializeField] float gravityScale = 1f;
     [SerializeField] float jumpHeight = 2f;
     [SerializeField] float jumpCooldown = 1f;
+    private bool delayedJump = false;
+
+    [Header("Pushing Objects")]
     [SerializeField] float pushForce = 1f;
-    [SerializeField] private float forceNeeded = 50f;
+    [SerializeField] private float forceNeeded = 20f;
     private float currentForce = 0f;
 
     Vector3 targetLocation = new Vector3(0f, 0f, 0f);
@@ -88,40 +91,60 @@ public class Moving : MonoBehaviour
             // движение
             // Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; // добавл€етс€ дл€ реакции на поворот камеры
             if (pushObjectChecker.ObjectCollision())
-            {                
+            {
                 currentForce += pushForce;
 
-                Debug.Log("Collision " + currentForce);
-                if(currentForce > forceNeeded)
+                if (currentForce > forceNeeded)
                 {
                     pushObjectChecker.ObjectCollisionCheck(direction * 2, true, false);
-                    controller.Move(direction * speed * Time.deltaTime); // заменить direction на moveDir.normalized, чтобы движение реагировало на поворот камеры 
                     currentForce = 0f;
+                }
+                else
+                {
+                    direction = new Vector3(0f, 0f, 0f).normalized;
                 }
             }
             else
             {
                 currentForce = 0f;
-                controller.Move(direction * speed * Time.deltaTime); // заменить direction на moveDir.normalized, чтобы движение реагировало на поворот камеры 
             }
         }
+
+        direction = direction * speed + new Vector3(0f, velocity, 0f);
+
+        //controller.Move(direction * speed * Time.deltaTime);
+        controller.Move(direction * Time.deltaTime);
     }
 
+    // ¬ычисл€ет перемещение по оси Y, которое используетс€ в Move()
     private void Jump()
     {
-        if (Input.GetKeyDown(jumpButton) && controller.isGrounded && readyToJump && alive)
+        if (Input.GetKeyDown(jumpButton) || delayedJump)
         {
-            readyToJump = false;
-            velocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            Invoke(nameof(ResetJump), jumpCooldown); // вызывает метод ResetJump через jumpCooldown секунд
+            if (controller.isGrounded && readyToJump && alive)
+            {
+                readyToJump = false;
+                velocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                Invoke(nameof(ResetJump), jumpCooldown); // вызывает метод ResetJump через jumpCooldown секунд
+                
+                delayedJump = false;
+            }
+            else
+            {
+                delayedJump = true;
+                Invoke(nameof(resetJumpDelay), 0.5f); // 0.3f reccomended
+            }
         }
-        velocity += gravity * Time.deltaTime;
-        controller.Move(new Vector3(0, velocity, 0) * Time.deltaTime);
-    }
 
+        velocity += gravity * Time.deltaTime;
+    }
     private void ResetJump()
     {
         readyToJump = true;
+    }
+    private void resetJumpDelay()
+    {
+        delayedJump = false;
     }
 
     public void Death()
