@@ -35,7 +35,7 @@ public class LavaScript : MonoBehaviour
             gameManager.Player2Death();
             Debug.Log("Lava!");
         }
-        if (other.tag == "Enemy")
+        if (other.tag == "Sacrifice")
         {
             gameManager.score += 1;
             Debug.Log("+1!");

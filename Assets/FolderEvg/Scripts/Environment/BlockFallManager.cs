@@ -15,7 +15,7 @@ public class BlockFallManager : MonoBehaviour
 
     void Start()
     {
-        lavaScript = FindObjectOfType<LavaScript>();
+        lavaScript = FindAnyObjectByType<LavaScript>();
     }
 
     public void Activate()
@@ -46,6 +46,7 @@ public class BlockFallManager : MonoBehaviour
             }
 
             Instantiate(blockPrefabs[blockIndex], new Vector3((float)randXPos, 20f, (float)randZPos), blockPrefabs[blockIndex].transform.rotation);
+            Invoke(nameof(DropBlock), timeBetweenBlocks); // Вызываем следующий блок
         }
         else
         {
@@ -62,7 +63,7 @@ public class BlockFallManager : MonoBehaviour
         }
         blockCount++;
 
-        //Invoke(nameof(DropBlock), timeBetweenBlocks); // Вызываем следующий блок
+        Invoke(nameof(DropBlock), timeBetweenBlocks); // Вызываем следующий блок
     }
 
     // Update is called once per frame

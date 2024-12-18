@@ -7,20 +7,24 @@ public class Moving : MonoBehaviour
     [SerializeField] bool player2;
     CharacterController controller;
     PushObject pushObjectChecker;
+    [SerializeField] Animator animator;
+    [SerializeField] float sitTimer = 5f;
+    private float lastMoveTime = 0.1f;
 
+    [Header("Movement")]
     [SerializeField] float speed = 6f;
     [SerializeField] float turnSmoothTime = 0.1f; // скорость поворота в сторону движени€
     private float turnSmoothVelocity;
 
     [Header("Jumping")]
     [SerializeField] float gravity = -25f;
-    [SerializeField] float gravityScale = 1f;
     [SerializeField] float jumpHeight = 2f;
-    [SerializeField] float jumpCooldown = 1f;
+    [SerializeField] float jumpCooldown = 0f;
+    [SerializeField] float delayedJumpWait = 0.5f;
     private bool delayedJump = false;
 
     [Header("Pushing Objects")]
-    [SerializeField] float pushForce = 1f;
+    [SerializeField] float accumulatingForce = 1f;
     [SerializeField] private float forceNeeded = 20f;
     private float currentForce = 0f;
 
@@ -81,18 +85,27 @@ public class Moving : MonoBehaviour
         // Moving
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
+        // ѕровер€ем есть ли достаточно сильное нажатие на клавишу 
         if (direction.magnitude >= 0.1f)
         {
+            // настройки анимаций
+            animator.SetBool("isRunning", true);
+            animator.SetBool("isSitting", false);
+            lastMoveTime = Time.time;
+            Debug.Log("Moved " + lastMoveTime);
+
             // поворот в сторону движени€
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg; // Atan2 = угол между осью y и вектором(x,z) и добавить "+ cam.eulerAngles.y;" в конец дл€ реакции на поворот камеры
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            // движение
+            // ≈сли впереди преп€тствие и мы стоим на земле, начинаем толкать
             // Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; // добавл€етс€ дл€ реакции на поворот камеры
-            if (pushObjectChecker.ObjectCollision())
+            if (pushObjectChecker.ObjectCollision() && controller.isGrounded)
             {
-                currentForce += pushForce;
+                animator.SetBool("isPushing", true);
+
+                currentForce += accumulatingForce;
 
                 if (currentForce > forceNeeded)
                 {
@@ -106,13 +119,21 @@ public class Moving : MonoBehaviour
             }
             else
             {
+                animator.SetBool("isPushing", false);
+
                 currentForce = 0f;
             }
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+            StartCoroutine(SitTimer(sitTimer));
         }
 
         direction = direction * speed + new Vector3(0f, velocity, 0f);
 
-        //controller.Move(direction * speed * Time.deltaTime);
+        // ƒвигаем персонажа
+        // controller.Move(direction * speed * Time.deltaTime);
         controller.Move(direction * Time.deltaTime);
     }
 
@@ -121,6 +142,8 @@ public class Moving : MonoBehaviour
     {
         if (Input.GetKeyDown(jumpButton) || delayedJump)
         {
+            currentForce = 0; // обнул€ем накопленную силу толчка
+
             if (controller.isGrounded && readyToJump && alive)
             {
                 readyToJump = false;
@@ -132,7 +155,7 @@ public class Moving : MonoBehaviour
             else
             {
                 delayedJump = true;
-                Invoke(nameof(resetJumpDelay), 0.5f); // 0.3f reccomended
+                Invoke(nameof(resetJumpDelay), delayedJumpWait); // 0.3f reccomended
             }
         }
 
@@ -155,5 +178,14 @@ public class Moving : MonoBehaviour
     public void Revive()
     {
         alive = true;
+    }
+
+    IEnumerator SitTimer(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        if (Time.time - lastMoveTime >= seconds)
+        {
+            animator.SetBool("isSitting", true);
+        }
     }
 }

@@ -88,7 +88,6 @@ public class PushObject : MonoBehaviour
 
             if (testObject == floor)
             {
-                Debug.Log("Trying to push, while standing on it!");
                 return true;
             }
         }
@@ -97,7 +96,6 @@ public class PushObject : MonoBehaviour
 
     private bool TryObjectMove(GameObject moveObject, Rigidbody rbody, Vector3 direction)
     {
-        Debug.Log("Trying to Move!");
         //rbody.linearVelocity = pushForce * direction;
         rbody.AddForce(direction * pushForce, ForceMode.Force);
 

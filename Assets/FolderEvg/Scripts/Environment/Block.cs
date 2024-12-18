@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+    [SerializeField] float resetTime = 2f;
     public Vector3 safePos;
 
     void Start()
@@ -11,7 +12,7 @@ public class Block : MonoBehaviour
 
     public void Respawn()
     {
-        Invoke(nameof(Return), 2f);
+        Invoke(nameof(Return), resetTime);
     }
     private void Return()
     {
