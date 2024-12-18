@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    AudioManager audioManager;
     LevelLoader levelLoader;
 
     [SerializeField] private GameObject player1;
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindAnyObjectByType<AudioManager>();
         levelLoader = FindAnyObjectByType<LevelLoader>();
 
         player1Script = player1.GetComponent<Moving>();
@@ -47,6 +49,8 @@ public class GameManager : MonoBehaviour
 
     public void Player1Death()
     {
+        audioManager.PlaySFX(audioManager.catBurn);
+
         player1Dead = true;
         if (player2Dead)
         {
@@ -62,6 +66,8 @@ public class GameManager : MonoBehaviour
     }
     public void Player2Death()
     {
+        audioManager.PlaySFX(audioManager.catBurn);
+
         player2Dead = true;
         if (player1Dead)
         {

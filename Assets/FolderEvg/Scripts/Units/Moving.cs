@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Moving : MonoBehaviour
 {
+    AudioSource audioSource;
+    AudioManager audioManager;
+
     [SerializeField] bool player2;
     CharacterController controller;
     PushObject pushObjectChecker;
@@ -42,6 +46,13 @@ public class Moving : MonoBehaviour
     {
         safePos = transform.position;
 
+        audioManager = FindAnyObjectByType<AudioManager>(); // delete later
+
+        audioSource = gameObject.GetComponent<AudioSource>();
+        audioSource.clip = audioManager.catWalk;
+        audioSource.Play();
+        audioSource.Pause();
+
         controller = gameObject.GetComponent<CharacterController>();
         pushObjectChecker = gameObject.GetComponent<PushObject>();
     }
@@ -52,6 +63,18 @@ public class Moving : MonoBehaviour
         {
             PlayerInput();
             Jump();
+        }
+
+        if(controller.velocity.magnitude > 0.1 && controller.isGrounded)
+        {
+            Debug.Log("Moving");
+            audioSource.UnPause();
+            //audioSource.Play();
+        }
+        else
+        {
+            audioSource.Pause();
+            //audioSource.Stop();
         }
     }
 
@@ -92,7 +115,6 @@ public class Moving : MonoBehaviour
             animator.SetBool("isRunning", true);
             animator.SetBool("isSitting", false);
             lastMoveTime = Time.time;
-            Debug.Log("Moved " + lastMoveTime);
 
             // поворот в сторону движения
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg; // Atan2 = угол между осью y и вектором(x,z) и добавить "+ cam.eulerAngles.y;" в конец для реакции на поворот камеры
@@ -109,6 +131,9 @@ public class Moving : MonoBehaviour
 
                 if (currentForce > forceNeeded)
                 {
+
+                    audioManager.PlaySFX(audioManager.rockPush);
+
                     pushObjectChecker.ObjectCollisionCheck(direction * 2, true, false);
                     currentForce = 0f;
                 }
@@ -142,6 +167,8 @@ public class Moving : MonoBehaviour
     {
         if (Input.GetKeyDown(jumpButton) || delayedJump)
         {
+            audioManager.PlaySFX(audioManager.catJump);
+
             currentForce = 0; // обнуляем накопленную силу толчка
 
             if (controller.isGrounded && readyToJump && alive)

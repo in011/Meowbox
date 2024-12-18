@@ -6,13 +6,16 @@ public class LavaScript : MonoBehaviour
 {
     [SerializeField] public float riseSpeed = 1f;
     GameManager gameManager;
+    AudioManager audioManager;
 
     private float currentYPos;
 
     void Start()
     {
+        audioManager = FindAnyObjectByType<AudioManager>();
+
         currentYPos = transform.position.y;
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindAnyObjectByType<GameManager>();
     }
 
     void Update()
@@ -25,24 +28,34 @@ public class LavaScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        audioManager.PlaySFX(audioManager.fallInLava);
+
         if (other.tag == "Player1")
         {
+            //audioManager.PlaySFX(audioManager.fallInLava);
+
             gameManager.Player1Death();
             Debug.Log("Lava!");
         }
         if (other.tag == "Player2")
         {
+            //audioManager.PlaySFX(audioManager.fallInLava);
+
             gameManager.Player2Death();
             Debug.Log("Lava!");
         }
         if (other.tag == "Sacrifice")
         {
+            audioManager.PlaySFX(audioManager.sheepBurn);
+
             gameManager.score += 1;
             Debug.Log("+1!");
         }
 
         if (other.tag == "Block")
         {
+            //audioManager.PlaySFX(audioManager.fallInLava);
+
             Block block;
             if(other.TryGetComponent<Block>(out block))
             {

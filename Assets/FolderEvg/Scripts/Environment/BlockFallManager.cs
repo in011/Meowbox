@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BlockFallManager : MonoBehaviour
 {
+    AudioManager audioManager;
+
     [SerializeField] private GameObject[] blockPrefabs;
     [SerializeField] private Vector3[] blockCoordinates;
     [SerializeField] private float timeBetweenBlocks = 3f;
@@ -15,12 +17,14 @@ public class BlockFallManager : MonoBehaviour
 
     void Start()
     {
+        audioManager = FindAnyObjectByType<AudioManager>();
         lavaScript = FindAnyObjectByType<LavaScript>();
     }
 
     public void Activate()
     {
         DropBlock(); // Первый блок
+        audioManager.MusicChange();
         lavaScript.riseSpeed = newLavaSpeed;
     }
     private void DropBlock()
