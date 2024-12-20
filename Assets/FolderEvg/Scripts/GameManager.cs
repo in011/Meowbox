@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,8 +15,10 @@ public class GameManager : MonoBehaviour
     private Moving player2Script;
     private bool player2Dead = false;
 
-    public int score = 0;
+    private int score = 0;
     [SerializeField] private int scoreNeeded = 1000;
+    [SerializeField] private GameObject portal;
+    [SerializeField] private GameObject portalPlaceEmpty;
 
     [Header("Falling Blocks")]
     [SerializeField] private GameObject[] blockPrefabs;
@@ -127,5 +130,23 @@ public class GameManager : MonoBehaviour
         Instantiate(blockPrefabs[0], new Vector3((float)randXPos, 20f, (float)randZPos), blockPrefabs[0].transform.rotation);
 
         Invoke(nameof(DropBlock), timeBetweenBlocks); // Вызываем следующий блок
+    }
+
+    public void AddScore()
+    {
+        score++;
+        if(score >= scoreNeeded)
+        {
+            Invoke(nameof(SpawnPortal), 3f); // Вызываем следующий блок
+        }
+        else
+        {
+            Debug.Log("Not enough " + score);
+        }
+    }
+    private void SpawnPortal()
+    {
+        Debug.Log("PORTAL");
+        Instantiate(portal, portalPlaceEmpty.transform.position, portalPlaceEmpty.transform.rotation);
     }
 }

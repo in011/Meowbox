@@ -48,7 +48,7 @@ public class LavaScript : MonoBehaviour
         {
             audioManager.PlaySFX(audioManager.sheepBurn);
 
-            gameManager.score += 1;
+            gameManager.AddScore();
             Debug.Log("+1!");
         }
 
