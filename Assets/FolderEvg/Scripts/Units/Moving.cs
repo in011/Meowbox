@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class Moving : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Moving : MonoBehaviour
     [SerializeField] float speed = 6f;
     [SerializeField] float turnSmoothTime = 0.1f; // скорость поворота в сторону движения
     private float turnSmoothVelocity;
+    bool oldMovement = false;
 
     [Header("Jumping")]
     [SerializeField] float gravity = -25f;
@@ -61,11 +63,20 @@ public class Moving : MonoBehaviour
     {
         if (alive)
         {
+            if (Input.GetKeyDown(KeyCode.F1))
+            {
+                oldMovement = false;
+            }
+            if (Input.GetKeyDown(KeyCode.F2))
+            {
+                oldMovement = true;
+            }
+
             PlayerInput();
             Jump();
         }
 
-        if(controller.velocity.magnitude > 0.1 && controller.isGrounded)
+        if (controller.velocity.magnitude > 0.1 && controller.isGrounded)
         {
             Debug.Log("Moving");
             audioSource.UnPause();
@@ -98,15 +109,25 @@ public class Moving : MonoBehaviour
         {
             horizontal = Input.GetAxisRaw("Horizontal2");
             vertical = Input.GetAxisRaw("Vertical2");
-            jumpButton = KeyCode.RightControl;
+            jumpButton = KeyCode.RightShift;
         }
 
     }
 
     private void Move()
     {
-        // Moving
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        Vector3 direction;
+        if (oldMovement)
+        {
+            // Old Moving 
+            direction = new Vector3(horizontal, 0f, vertical).normalized;
+        }
+        else
+        {
+            // Camera Moving
+            direction = new Vector3(-1f, 0f, 1f) * vertical + new Vector3(1f, 0f, 1f) * horizontal;
+            direction.Normalize();
+        }
 
         // Проверяем есть ли достаточно сильное нажатие на клавишу 
         if (direction.magnitude >= 0.1f)
@@ -131,7 +152,6 @@ public class Moving : MonoBehaviour
 
                 if (currentForce > forceNeeded)
                 {
-
                     audioManager.PlaySFX(audioManager.rockPush);
 
                     pushObjectChecker.ObjectCollisionCheck(direction * 2, true, false);
@@ -176,7 +196,7 @@ public class Moving : MonoBehaviour
                 readyToJump = false;
                 velocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
                 Invoke(nameof(ResetJump), jumpCooldown); // вызывает метод ResetJump через jumpCooldown секунд
-                
+
                 delayedJump = false;
             }
             else

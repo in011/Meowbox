@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
@@ -36,17 +37,17 @@ public class GameManager : MonoBehaviour
 
         if (blockFall)
         {
-            Invoke(nameof(DropBlock), timeBetweenBlocks); // Первый блок
+            Invoke(nameof(DropBlock), timeBetweenBlocks); //            
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Test button
-        if (Input.GetButtonDown("Fire1"))
+        // Reset button
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            //Player1Death();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
@@ -64,7 +65,7 @@ public class GameManager : MonoBehaviour
         player1Script.safePos = player2.transform.position;
         player1.transform.position = player1Script.safePos;
         player1.SetActive(false);
-        Invoke(nameof(RespawnPlayer1), 6); // вызывает метод ResetJump через jumpCooldown секунд
+        Invoke(nameof(RespawnPlayer1), 6); //                ResetJump       jumpCooldown       
         StartCoroutine(Timer(5));
     }
     public void Player2Death()
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
         player2Script.safePos = player1.transform.position;
         player2.transform.position = player2Script.safePos;
         player2.SetActive(false);
-        Invoke(nameof(RespawnPlayer2), 6); // вызывает метод ResetJump через jumpCooldown секунд
+        Invoke(nameof(RespawnPlayer2), 6); //                ResetJump       jumpCooldown       
         StartCoroutine(Timer(5));
     }
 
@@ -102,7 +103,7 @@ public class GameManager : MonoBehaviour
         player2Script.Revive();
     }
 
-    // Отсчёт времени (консоль)
+    //                (       )
     IEnumerator Timer(int seconds)
     {
         do
@@ -118,7 +119,7 @@ public class GameManager : MonoBehaviour
         int randXPos = Random.Range(-7, 5);
         int randZPos = Random.Range(-7, 5);
 
-        if(randXPos % 2 == 0)
+        if (randXPos % 2 == 0)
         {
             randXPos -= 1;
         }
@@ -129,15 +130,14 @@ public class GameManager : MonoBehaviour
 
         Instantiate(blockPrefabs[0], new Vector3((float)randXPos, 20f, (float)randZPos), blockPrefabs[0].transform.rotation);
 
-        Invoke(nameof(DropBlock), timeBetweenBlocks); // Вызываем следующий блок
+        Invoke(nameof(DropBlock), timeBetweenBlocks); //                        
     }
-
     public void AddScore()
     {
         score++;
-        if(score >= scoreNeeded)
+        if (score >= scoreNeeded)
         {
-            Invoke(nameof(SpawnPortal), 3f); // Вызываем следующий блок
+            Invoke(nameof(SpawnPortal), 3f); //                        
         }
         else
         {
