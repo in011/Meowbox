@@ -32,30 +32,16 @@ public class LavaScript : MonoBehaviour
 
         if (other.tag == "Player1")
         {
-            //audioManager.PlaySFX(audioManager.fallInLava);
-
             gameManager.Player1Death();
             Debug.Log("Lava!");
         }
         if (other.tag == "Player2")
         {
-            //audioManager.PlaySFX(audioManager.fallInLava);
-
             gameManager.Player2Death();
             Debug.Log("Lava!");
         }
-        if (other.tag == "Sacrifice")
-        {
-            audioManager.PlaySFX(audioManager.sheepBurn);
-
-            gameManager.AddScore();
-            Debug.Log("+1!");
-        }
-
         if (other.tag == "Block")
         {
-            //audioManager.PlaySFX(audioManager.fallInLava);
-
             Block block;
             if(other.TryGetComponent<Block>(out block))
             {

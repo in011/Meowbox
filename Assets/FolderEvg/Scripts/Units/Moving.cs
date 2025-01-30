@@ -78,7 +78,6 @@ public class Moving : MonoBehaviour
 
         if (controller.velocity.magnitude > 0.1 && controller.isGrounded)
         {
-            Debug.Log("Moving");
             audioSource.UnPause();
             //audioSource.Play();
         }
@@ -187,13 +186,16 @@ public class Moving : MonoBehaviour
     {
         if (Input.GetKeyDown(jumpButton) || delayedJump)
         {
-            audioManager.PlaySFX(audioManager.catJump);
-
             currentForce = 0; // обнуляем накопленную силу толчка
 
             if (controller.isGrounded && readyToJump && alive)
             {
                 readyToJump = false;
+                audioManager.PlaySFX(audioManager.catJump);
+                animator.SetBool("isRunning", true);
+                animator.SetBool("isSitting", false);
+
+
                 velocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
                 Invoke(nameof(ResetJump), jumpCooldown); // вызывает метод ResetJump через jumpCooldown секунд
 

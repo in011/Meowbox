@@ -38,15 +38,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea5c87df415510c44ba2eb87a793e87b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea5c87df415510c44ba2eb87a793e87b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea5c87df415510c44ba2eb87a793e87b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea5c87df415510c44ba2eb87a793e87b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -89,6 +89,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ea5c87df415510c44ba2eb87a793e87b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4861420708112133837}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ea5c87df415510c44ba2eb87a793e87b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4796679564782218941}
   m_SourcePrefab: {fileID: 100100000, guid: ea5c87df415510c44ba2eb87a793e87b, type: 3}
 --- !u!1 &4745188000522669175 stripped
 GameObject:
@@ -165,3 +168,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &4796679564782218941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4745188000522669175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a39b6ecbbb4a8b4e9d1c73613f5b512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 1

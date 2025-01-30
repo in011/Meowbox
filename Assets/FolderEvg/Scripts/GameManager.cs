@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     private Moving player2Script;
     private bool player2Dead = false;
 
-    private int score = 0;
+    [SerializeField] private int score = 0;
     [SerializeField] private int scoreNeeded = 1000;
     [SerializeField] private GameObject portal;
     [SerializeField] private GameObject portalPlaceEmpty;
@@ -132,9 +132,9 @@ public class GameManager : MonoBehaviour
 
         Invoke(nameof(DropBlock), timeBetweenBlocks); //                        
     }
-    public void AddScore()
+    public void AddScore(int scoreToAdd)
     {
-        score++;
+        score += scoreToAdd;
         if (score >= scoreNeeded)
         {
             Invoke(nameof(SpawnPortal), 3f); //                        
