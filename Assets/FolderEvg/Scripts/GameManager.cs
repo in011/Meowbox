@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     AudioManager audioManager;
     LevelLoader levelLoader;
+    [SerializeField] PauseMenu pauseMenu;
 
     [SerializeField] private GameObject player1;
     private Moving player1Script;
@@ -35,19 +36,21 @@ public class GameManager : MonoBehaviour
         player1Script = player1.GetComponent<Moving>();
         player2Script = player2.GetComponent<Moving>();
 
+        // Lock and disable Cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         if (blockFall)
         {
             Invoke(nameof(DropBlock), timeBetweenBlocks); //            
         }
     }
-
-    // Update is called once per frame
     void Update()
     {
-        // Reset button
-        if (Input.GetKeyDown(KeyCode.R))
+        // Call Pause Menu
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            pauseMenu.Pause();
         }
     }
 
