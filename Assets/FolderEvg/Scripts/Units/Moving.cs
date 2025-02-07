@@ -20,6 +20,7 @@ public class Moving : MonoBehaviour
     [SerializeField] float speed = 6f;
     [SerializeField] float turnSmoothTime = 0.1f; // скорость поворота в сторону движения
     private float turnSmoothVelocity;
+    private Vector3 direction;
     bool oldMovement = false;
 
     [Header("Jumping")]
@@ -34,6 +35,17 @@ public class Moving : MonoBehaviour
     [SerializeField] private float forceNeeded = 20f;
     private float currentForce = 0f;
 
+    [Header("Dash")]
+    [SerializeField] private bool hasDashAbility = true;
+    [SerializeField] private float dashSpeed = 6f;
+    [SerializeField] private float dashTime = 0.1f;
+    [SerializeField] private float dashCD = 3f;
+    [SerializeField] private KeyCode dashButton = KeyCode.LeftShift;
+    [SerializeField] private float dashPushPower = 2f;
+    // [SerializeField] private TrailRenderer dashTrail;
+    private bool isDashing = false;
+    private bool canDash = true;
+
     Vector3 targetLocation = new Vector3(0f, 0f, 0f);
     private float horizontal;
     private float vertical;
@@ -41,8 +53,9 @@ public class Moving : MonoBehaviour
     private float velocity;
     private bool readyToJump = true;
 
+    [Header("Respawn")]
+    [SerializeField] public Vector3 safePos;
     private bool alive = true;
-    public Vector3 safePos;
 
     private void Start()
     {
@@ -74,6 +87,7 @@ public class Moving : MonoBehaviour
 
             PlayerInput();
             Jump();
+            Dash();
         }
 
         if (controller.velocity.magnitude > 0.1 && controller.isGrounded)
@@ -115,7 +129,6 @@ public class Moving : MonoBehaviour
 
     private void Move()
     {
-        Vector3 direction;
         if (oldMovement)
         {
             // Old Moving 
@@ -123,7 +136,7 @@ public class Moving : MonoBehaviour
         }
         else
         {
-            // Camera Moving
+            // Camera Direction
             direction = new Vector3(-1f, 0f, 1f) * vertical + new Vector3(1f, 0f, 1f) * horizontal;
             direction.Normalize();
         }
@@ -178,7 +191,27 @@ public class Moving : MonoBehaviour
 
         // Двигаем персонажа
         // controller.Move(direction * speed * Time.deltaTime);
-        controller.Move(direction * Time.deltaTime);
+        if (isDashing)
+        {
+            Vector3 dashDirection = new Vector3(direction.x, 0f, direction.z);
+
+            if (pushObjectChecker.ObjectCollision())
+            {
+                Debug.Log("Object");
+                Debug.Log(gameObject.transform.forward * 2);
+                pushObjectChecker.pushForce *= dashPushPower;
+                pushObjectChecker.ObjectCollisionCheck(gameObject.transform.forward * 2, true, false);
+                pushObjectChecker.pushForce = 175;
+                isDashing = false;
+                currentForce = 0f;
+            }
+
+            controller.Move(dashDirection * dashSpeed * Time.deltaTime);
+        }
+        else
+        {
+            controller.Move(direction * Time.deltaTime);
+        }
     }
 
     // Вычисляет перемещение по оси Y, которое используется в Move()
@@ -217,6 +250,40 @@ public class Moving : MonoBehaviour
     private void resetJumpDelay()
     {
         delayedJump = false;
+    }
+
+    // на время модифицирует функцию Move
+    private void Dash()
+    {
+        //dashTrail.emitting = false;
+        if (Input.GetKeyDown(dashButton) && canDash && hasDashAbility)
+        {
+            StartCoroutine(DashTimer());
+            StartCoroutine(DashCD());
+        }
+
+        // проверять есть ли впереди объект
+        // если есть, то по нажатию кнопки сильно толкаем его
+        // если нет, то на время добавляем горизонтальное перемещение
+
+        IEnumerator DashTimer()
+        {
+            isDashing = true;
+            Debug.Log("Dashing");
+            yield return new WaitForSeconds(dashTime);
+
+            isDashing = false;
+            Debug.Log("Stop");
+        }
+        IEnumerator DashCD()
+        {
+            canDash = false;
+            Debug.Log("no dash");
+            yield return new WaitForSeconds(dashCD);
+
+            canDash = true;
+            Debug.Log("canDash!");
+        }
     }
 
     public void Death()

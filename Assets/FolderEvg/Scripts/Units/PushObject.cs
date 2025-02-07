@@ -12,7 +12,7 @@ public class PushObject : MonoBehaviour
     bool hasRigidBody;
     RaycastHit rayHit;
     [SerializeField] float checkDistance = 2f;
-    [SerializeField] float pushForce = 175f; // 14.25f - old
+    [SerializeField] public float pushForce = 175f; // 14.25f - old
 
     RaycastHit testRayHit;
     GameObject floor;
@@ -97,6 +97,7 @@ public class PushObject : MonoBehaviour
     private bool TryObjectMove(GameObject moveObject, Rigidbody rbody, Vector3 direction)
     {
         //rbody.linearVelocity = pushForce * direction;
+        Debug.Log("TryPush");
         rbody.AddForce(direction * pushForce, ForceMode.Force);
 
         return false;
