@@ -29,13 +29,15 @@ public class AbilityManager : MonoBehaviour
         petrifCat1 = Instantiate(petrifiedPrefab1, pos, petrifiedPrefab1.transform.rotation);
         petrifCat1.GetComponent<PetrifiedCat>().player2 = false;
 
-        Invoke(nameof(WaitForSignal1), 1f);
+        Invoke(nameof(WaitForSignal1), 0.1f);
     }
     public void Cat1Restore(Vector3 pos, Quaternion rot)
     {
         isRock1 = false;
-        player1.SetActive(true);
         player1.transform.position = pos;
+        player1.SetActive(true);
+        player1.GetComponent<Petrification>().PetryfyReset();
+        player1.GetComponent<Moving>().PushUp();
     }
     void WaitForSignal1()
     {
@@ -46,16 +48,17 @@ public class AbilityManager : MonoBehaviour
     {
 
         player2.SetActive(false);
-        petrifCat2 = Instantiate(petrifiedPrefab2, pos, petrifiedPrefab2.transform.rotation);
+        petrifCat2 = Instantiate(petrifiedPrefab2, pos + new Vector3(0f,1f,0f), petrifiedPrefab2.transform.rotation);
         petrifCat2.GetComponent<PetrifiedCat>().player2 = true;
         
-        Invoke(nameof(WaitForSignal2), 1f);
+        Invoke(nameof(WaitForSignal2), 0.1f);
     }
     public void Cat2Restore(Vector3 pos, Quaternion rot)
     {
         isRock2 = false;
         player2.transform.position = pos;
         player2.SetActive(true);
+        player2.GetComponent<Petrification>().PetryfyReset();
         player2.GetComponent<Moving>().PushUp();
     }
     void WaitForSignal2()
