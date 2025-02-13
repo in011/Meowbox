@@ -42,8 +42,8 @@ public class LavaScript : MonoBehaviour
         }
         if (other.tag == "Block")
         {
-            Block block;
-            if(other.TryGetComponent<Block>(out block))
+            BaseBlock block;
+            if(other.TryGetComponent<BaseBlock>(out block))
             {
                 block.Respawn();
             }

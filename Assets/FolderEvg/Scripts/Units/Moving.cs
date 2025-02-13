@@ -9,7 +9,7 @@ public class Moving : MonoBehaviour
     AudioSource audioSource;
     AudioManager audioManager;
 
-    [SerializeField] bool player2;
+    [SerializeField] public bool player2 = false;
     CharacterController controller;
     PushObject pushObjectChecker;
     [SerializeField] Animator animator;
@@ -19,6 +19,7 @@ public class Moving : MonoBehaviour
     [Header("Movement")]
     [SerializeField] float speed = 6f;
     [SerializeField] float turnSmoothTime = 0.1f; // скорость поворота в сторону движения
+    [SerializeField] float fallSpeed = 20f;
     private float turnSmoothVelocity;
     private Vector3 direction;
     bool oldMovement = false;
@@ -36,11 +37,11 @@ public class Moving : MonoBehaviour
     private float currentForce = 0f;
 
     [Header("Dash")]
+    [SerializeField] private KeyCode abilityButton = KeyCode.LeftShift;
     [SerializeField] private bool hasDashAbility = true;
     [SerializeField] private float dashSpeed = 6f;
     [SerializeField] private float dashTime = 0.1f;
     [SerializeField] private float dashCD = 3f;
-    [SerializeField] private KeyCode dashButton = KeyCode.LeftShift;
     [SerializeField] private float dashPushPower = 2f;
     // [SerializeField] private TrailRenderer dashTrail;
     private bool isDashing = false;
@@ -60,6 +61,14 @@ public class Moving : MonoBehaviour
     private void Start()
     {
         safePos = transform.position;
+        if (!player2)
+        {
+            jumpButton = KeyCode.Space;
+        }
+        else
+        {
+            jumpButton = KeyCode.RightShift;
+        }
 
         audioManager = FindAnyObjectByType<AudioManager>(); // delete later
 
@@ -70,6 +79,8 @@ public class Moving : MonoBehaviour
 
         controller = gameObject.GetComponent<CharacterController>();
         pushObjectChecker = gameObject.GetComponent<PushObject>();
+
+        
     }
 
     void Update()
@@ -116,15 +127,12 @@ public class Moving : MonoBehaviour
         {
             horizontal = Input.GetAxisRaw("Horizontal1");
             vertical = Input.GetAxisRaw("Vertical1");
-            jumpButton = KeyCode.Space;
         }
         else
         {
             horizontal = Input.GetAxisRaw("Horizontal2");
             vertical = Input.GetAxisRaw("Vertical2");
-            jumpButton = KeyCode.RightShift;
         }
-
     }
 
     private void Move()
@@ -224,12 +232,8 @@ public class Moving : MonoBehaviour
             if (controller.isGrounded && readyToJump && alive)
             {
                 readyToJump = false;
-                audioManager.PlaySFX(audioManager.catJump);
-                animator.SetBool("isRunning", true);
-                animator.SetBool("isSitting", false);
+                PushUp();
 
-
-                velocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
                 Invoke(nameof(ResetJump), jumpCooldown); // вызывает метод ResetJump через jumpCooldown секунд
 
                 delayedJump = false;
@@ -242,6 +246,16 @@ public class Moving : MonoBehaviour
         }
 
         velocity += gravity * Time.deltaTime;
+        velocity = Mathf.Clamp(velocity, -fallSpeed, 20f);
+    }
+    public void PushUp()
+    {
+        audioManager.PlaySFX(audioManager.catJump);
+        animator.SetBool("isRunning", true);
+        animator.SetBool("isSitting", false);
+
+
+        velocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
     }
     private void ResetJump()
     {
@@ -256,7 +270,7 @@ public class Moving : MonoBehaviour
     private void Dash()
     {
         //dashTrail.emitting = false;
-        if (Input.GetKeyDown(dashButton) && canDash && hasDashAbility)
+        if (Input.GetKeyDown(abilityButton) && canDash && hasDashAbility)
         {
             StartCoroutine(DashTimer());
             StartCoroutine(DashCD());

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4090265903453205403}
   - component: {fileID: 6571062116611027755}
   - component: {fileID: 6693353886581276734}
+  - component: {fileID: 4812594271685936435}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player1
@@ -79,17 +80,18 @@ MonoBehaviour:
   sitTimer: 5
   speed: 6
   turnSmoothTime: 0.09
+  fallSpeed: 20
   gravity: -30
   jumpHeight: 2.1
   jumpCooldown: 0
   delayedJumpWait: 0.5
   accumulatingForce: 1
   forceNeeded: 20
+  abilityButton: 304
   hasDashAbility: 1
   dashSpeed: 6
   dashTime: 0.1
   dashCD: 1.5
-  dashButton: 304
   dashPushPower: 2
   safePos: {x: 0, y: 0, z: 0}
 --- !u!114 &6571062116611027755
@@ -203,6 +205,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4812594271685936435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2364832390037169828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ab0a0a27d14024584ee6f9fa4a21d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player2: 0
+  hasPetrificationAbility: 0
+  petrifyButton: 304
 --- !u!1 &4440049948997525860
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,7 +239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3012526069143937862
 Transform:
   m_ObjectHideFlags: 0

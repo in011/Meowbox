@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &186986843749546388
+--- !u!1001 &5666169333405600026
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.35
+      value: 10.471067
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.35
+      value: 1.0521761
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -84.95
+      value: -86.79619
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51,10 +51,10 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 734100eb9a37060489e68ed6aa4912b8, type: 2}
+      objectReference: {fileID: 2100000, guid: 05912efaca370b149b602a16bdd738c8, type: 2}
     - target: {fileID: 919132149155446097, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
       propertyPath: m_Name
-      value: PR_SM_RockBlock_01
+      value: PetrifiedCat
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
       propertyPath: m_TagString
@@ -66,26 +66,26 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 38352772200564505}
+      addedObject: {fileID: 2088892245949959518}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2785252193864733744}
+      addedObject: {fileID: 8887359906984186464}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9132985633239375723}
+      addedObject: {fileID: 8339558857223910156}
   m_SourcePrefab: {fileID: 100100000, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
---- !u!1 &1033899760858285253 stripped
+--- !u!1 &4783719099900851275 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
-  m_PrefabInstance: {fileID: 186986843749546388}
+  m_PrefabInstance: {fileID: 5666169333405600026}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &38352772200564505
+--- !u!65 &2088892245949959518
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033899760858285253}
+  m_GameObject: {fileID: 4783719099900851275}
   m_Material: {fileID: 13400000, guid: 6f2e48e32d9532b41a0475d71e58433a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -100,13 +100,13 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.02, y: 0.02, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2785252193864733744
+--- !u!54 &8887359906984186464
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033899760858285253}
+  m_GameObject: {fileID: 4783719099900851275}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -127,17 +127,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &9132985633239375723
+--- !u!114 &8339558857223910156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1033899760858285253}
+  m_GameObject: {fileID: 4783719099900851275}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4f828a6b77177d47b42110a05bea9c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1515414a95b098447879ccb1cd62f55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetTime: 5
+  resetTime: 3
   safePos: {x: 0, y: 0, z: 0}
+  petrificationResetTime: 5
+  player2: 1

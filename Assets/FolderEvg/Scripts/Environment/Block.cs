@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Block : MonoBehaviour
+public class Block : BaseBlock
 {
-    [SerializeField] float resetTime = 2f;
+    [SerializeField] protected float resetTime = 5f;
     public Vector3 safePos;
 
     void Start()
@@ -10,12 +10,14 @@ public class Block : MonoBehaviour
         safePos = transform.position;
     }
 
-    public void Respawn()
+    public override void Respawn()
     {
+        gameObject.GetComponent<Rigidbody>().linearDamping = 10;
         Invoke(nameof(Return), resetTime);
     }
     private void Return()
     {
+        gameObject.GetComponent<Rigidbody>().linearDamping = 0;
         transform.position = safePos;
     }
 }
