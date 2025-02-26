@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1199521817490652586}
   serializedVersion: 2
   m_LocalRotation: {x: 0.34395358, y: -0.40500218, z: 0.16775739, w: 0.83037746}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 22.5, y: 35, z: -19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -63,8 +63,8 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 0.5
+    width: 0.5
+    height: 1
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
@@ -182,4 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792fb99bd53e17b438ce192df1d63cb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1: 0
   playerObject: {fileID: 0}
+  secondPlayer: {fileID: 0}
+  camera: {fileID: 2559153446217771127}
