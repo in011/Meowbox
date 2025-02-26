@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkDistance: 1
-  pushForce: 175
+  pushForce: 1
 --- !u!82 &6693353886581276734
 AudioSource:
   m_ObjectHideFlags: 0
@@ -220,6 +220,7 @@ MonoBehaviour:
   player2: 0
   hasPetrificationAbility: 0
   petrifyButton: 304
+  petrificationCD: 1.5
 --- !u!1 &4440049948997525860
 GameObject:
   m_ObjectHideFlags: 0

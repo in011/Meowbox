@@ -12,7 +12,7 @@ public class PushObject : MonoBehaviour
     bool hasRigidBody;
     RaycastHit rayHit;
     [SerializeField] float checkDistance = 2f;
-    [SerializeField] public float pushForce = 175f; // 14.25f - old
+    [SerializeField] public float pushForce = 1f; // 14.25f - old
 
     RaycastHit testRayHit;
     GameObject floor;
@@ -24,8 +24,6 @@ public class PushObject : MonoBehaviour
     /// <returns></returns>
     public bool ObjectCollisionCheck(Vector3 moveVector, bool movePermission, bool StepMovement)
     {
-        Debug.DrawRay(transform.position, transform.TransformDirection(transform.forward) * checkDistance, UnityEngine.Color.green);
-
         if (Physics.Raycast(transform.position, transform.forward, out rayHit, checkDistance))
         {
             Rigidbody body = rayHit.collider.attachedRigidbody;
@@ -51,7 +49,7 @@ public class PushObject : MonoBehaviour
             }
             if (movePermission)
             {
-                TryObjectMove(pushObject, body, moveVector);
+                TryObjectMove(pushObject, body, -rayHit.normal); // moveVector
             }
 
             return false;
@@ -97,8 +95,7 @@ public class PushObject : MonoBehaviour
     private bool TryObjectMove(GameObject moveObject, Rigidbody rbody, Vector3 direction)
     {
         //rbody.linearVelocity = pushForce * direction;
-        Debug.Log("TryPush");
-        rbody.AddForce(direction * pushForce, ForceMode.Force);
+        rbody.AddForce(direction * pushForce * 348.25f, ForceMode.Force);
 
         return false;
     }

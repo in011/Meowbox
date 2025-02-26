@@ -207,9 +207,10 @@ public class Moving : MonoBehaviour
             {
                 Debug.Log("Object");
                 Debug.Log(gameObject.transform.forward * 2);
+                float originalPushForce = pushObjectChecker.pushForce;
                 pushObjectChecker.pushForce *= dashPushPower;
                 pushObjectChecker.ObjectCollisionCheck(gameObject.transform.forward * 2, true, false);
-                pushObjectChecker.pushForce = 175;
+                pushObjectChecker.pushForce = originalPushForce;
                 isDashing = false;
                 currentForce = 0f;
             }
