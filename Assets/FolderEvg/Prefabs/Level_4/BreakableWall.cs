@@ -13,9 +13,12 @@ public class BreakableWall : MonoBehaviour
     {
         if (other.CompareTag("Block"))
         {
-            Debug.Log("Broken");
-            Instantiate(brokenWall, gameObject.transform);
-            gameObject.SetActive(false);
+            Rigidbody rb = other.attachedRigidbody;
+            if (rb.linearVelocity.magnitude > 10f)
+            {
+                Instantiate(brokenWall, gameObject.transform);
+                gameObject.SetActive(false);
+            }        
         }
     }
 }
