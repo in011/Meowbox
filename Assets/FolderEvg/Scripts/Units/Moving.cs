@@ -309,6 +309,7 @@ public class Moving : MonoBehaviour
     public void Revive()
     {
         alive = true;
+        canDash = true;
     }
 
     IEnumerator SitTimer(float seconds)

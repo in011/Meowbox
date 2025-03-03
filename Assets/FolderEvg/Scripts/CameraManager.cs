@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.Splines.Interpolators;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class CameraManager : MonoBehaviour
 {
