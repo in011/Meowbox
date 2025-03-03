@@ -36,11 +36,11 @@ public class Petrification : MonoBehaviour
     public void PetryfyReset()
     {
         Invoke(nameof(ResetCD), petrificationCD);
-        Debug.Log("Wait for CD");
+        //Debug.Log("Wait for CD");
     }
     void ResetCD()
     {
         canPetrify = true;
-        Debug.Log("Can Petrify");
+        //Debug.Log("Can Petrify");
     }
 }

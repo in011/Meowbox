@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
     LevelLoader levelLoader;
     [SerializeField] PauseMenu pauseMenu;
 
-    [SerializeField] private GameObject player1;
+    [SerializeField] private bool onPlayerRespawn = false;
+    [SerializeField] public GameObject player1;
     private Moving player1Script;
     private bool player1Dead = false;
-    [SerializeField] private GameObject player2;
+    [SerializeField] public GameObject player2;
     private Moving player2Script;
     private bool player2Dead = false;
 
@@ -65,7 +66,10 @@ public class GameManager : MonoBehaviour
         }
 
         player1Script.Death();
-        player1Script.safePos = player2.transform.position;
+        if (onPlayerRespawn)
+        {
+            player1Script.safePos = player2.transform.position;
+        }
         player1.transform.position = player1Script.safePos;
         player1.SetActive(false);
         Invoke(nameof(RespawnPlayer1), 6); // ResetJump jumpCooldown       
@@ -82,7 +86,10 @@ public class GameManager : MonoBehaviour
         }
 
         player2Script.Death();
-        player2Script.safePos = player1.transform.position;
+        if(onPlayerRespawn)
+        {
+            player2Script.safePos = player1.transform.position;
+        }
         player2.transform.position = player2Script.safePos;
         player2.SetActive(false);
         Invoke(nameof(RespawnPlayer2), 6); // ResetJump jumpCooldown       
