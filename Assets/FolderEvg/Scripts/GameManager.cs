@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         player1Script.safePos = player2.transform.position;
         player1.transform.position = player1Script.safePos;
         player1.SetActive(false);
-        Invoke(nameof(RespawnPlayer1), 6); //                ResetJump       jumpCooldown       
+        Invoke(nameof(RespawnPlayer1), 6); // ResetJump jumpCooldown       
         StartCoroutine(Timer(5));
     }
     public void Player2Death()
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         player2Script.safePos = player1.transform.position;
         player2.transform.position = player2Script.safePos;
         player2.SetActive(false);
-        Invoke(nameof(RespawnPlayer2), 6); //                ResetJump       jumpCooldown       
+        Invoke(nameof(RespawnPlayer2), 6); // ResetJump jumpCooldown       
         StartCoroutine(Timer(5));
     }
 
