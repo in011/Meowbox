@@ -27,34 +27,32 @@ public class PushObject : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, transform.forward, out rayHit, checkDistance, blockLayerMask))
         {
-            if (rayHit.collider.CompareTag("Block"))
+            Rigidbody body = rayHit.collider.attachedRigidbody;
+            GameObject pushObject = rayHit.collider.gameObject;
+
+            if (pushObject.TryGetComponent<BoxCollider>(out BoxCollider collider) && !pushObject.TryGetComponent<Rigidbody>(out Rigidbody rbody))
             {
-                Rigidbody body = rayHit.collider.attachedRigidbody;
-                GameObject pushObject = rayHit.collider.gameObject;
-
-                if (pushObject.TryGetComponent<BoxCollider>(out BoxCollider collider) && !pushObject.TryGetComponent<Rigidbody>(out Rigidbody rbody))
-                {
-                    return false;
-                }
-
-                if (body == null || body.isKinematic)
-                {
-                    return true;
-                }
-                /*if (hit.moveDirection.y < -0.3f)
-                {
-                    return;
-                }*/
-
-                if (FloorObject(pushObject))
-                {
-                    return false;
-                }
-                if (movePermission)
-                {
-                    TryObjectMove(pushObject, body, -rayHit.normal); // moveVector
-                }
+                return false;
             }
+
+            if (body == null || body.isKinematic)
+            {
+                return true;
+            }
+            /*if (hit.moveDirection.y < -0.3f)
+            {
+                return;
+            }*/
+
+            if (FloorObject(pushObject))
+            {
+                return false;
+            }
+            if (movePermission)
+            {
+                TryObjectMove(pushObject, body, -rayHit.normal); // moveVector
+            }
+
 
             return false;
         }

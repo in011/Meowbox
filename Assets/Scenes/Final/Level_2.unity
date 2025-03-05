@@ -6003,6 +6003,14 @@ PrefabInstance:
       propertyPath: playerObject
       value: 
       objectReference: {fileID: 927578651}
+    - target: {fileID: 2146495303963289884, guid: ca430af9c32bf4b45871567fc7a130cb, type: 3}
+      propertyPath: rotateLeftKey
+      value: 258
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146495303963289884, guid: ca430af9c32bf4b45871567fc7a130cb, type: 3}
+      propertyPath: rotateRightKey
+      value: 257
+      objectReference: {fileID: 0}
     - target: {fileID: 5039002542654657100, guid: ca430af9c32bf4b45871567fc7a130cb, type: 3}
       propertyPath: m_Name
       value: CameraHolder2
@@ -6166,15 +6174,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3934354377415059467, guid: f8e834c61acf6cc4f9814609a3f980ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.03
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 3934354377415059467, guid: f8e834c61acf6cc4f9814609a3f980ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.83
+      value: -18.58
       objectReference: {fileID: 0}
     - target: {fileID: 3934354377415059467, guid: f8e834c61acf6cc4f9814609a3f980ca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.61
+      value: -9.1
       objectReference: {fileID: 0}
     - target: {fileID: 3934354377415059467, guid: f8e834c61acf6cc4f9814609a3f980ca, type: 3}
       propertyPath: m_LocalRotation.w

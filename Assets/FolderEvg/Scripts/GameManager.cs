@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour
         score += scoreToAdd;
         if (score >= scoreNeeded)
         {
-            Invoke(nameof(SpawnPortal), 3f); //                        
+            Invoke(nameof(SpawnPortal), 0.5f); //                        
         }
         else
         {
