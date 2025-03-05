@@ -13,6 +13,7 @@ public class PushObject : MonoBehaviour
     RaycastHit rayHit;
     [SerializeField] float checkDistance = 2f;
     [SerializeField] public float pushForce = 1f; // 14.25f - old
+    [SerializeField] private LayerMask blockLayerMask; // LayerMask for filtering collisions
 
     RaycastHit testRayHit;
     GameObject floor;
@@ -24,32 +25,35 @@ public class PushObject : MonoBehaviour
     /// <returns></returns>
     public bool ObjectCollisionCheck(Vector3 moveVector, bool movePermission, bool StepMovement)
     {
-        if (Physics.Raycast(transform.position, transform.forward, out rayHit, checkDistance))
+        if (Physics.Raycast(transform.position, transform.forward, out rayHit, checkDistance, blockLayerMask))
         {
-            Rigidbody body = rayHit.collider.attachedRigidbody;
-            GameObject pushObject = rayHit.collider.gameObject;
+            if (rayHit.collider.CompareTag("Block"))
+            {
+                Rigidbody body = rayHit.collider.attachedRigidbody;
+                GameObject pushObject = rayHit.collider.gameObject;
 
-            if (pushObject.TryGetComponent<BoxCollider>(out BoxCollider collider) && !pushObject.TryGetComponent<Rigidbody>(out Rigidbody rbody))
-            {
-                return false;
-            }
+                if (pushObject.TryGetComponent<BoxCollider>(out BoxCollider collider) && !pushObject.TryGetComponent<Rigidbody>(out Rigidbody rbody))
+                {
+                    return false;
+                }
 
-            if (body == null || body.isKinematic)
-            {
-                return true;
-            }
-            /*if (hit.moveDirection.y < -0.3f)
-            {
-                return;
-            }*/
+                if (body == null || body.isKinematic)
+                {
+                    return true;
+                }
+                /*if (hit.moveDirection.y < -0.3f)
+                {
+                    return;
+                }*/
 
-            if (FloorObject(pushObject))
-            {
-                return false;
-            }
-            if (movePermission)
-            {
-                TryObjectMove(pushObject, body, -rayHit.normal); // moveVector
+                if (FloorObject(pushObject))
+                {
+                    return false;
+                }
+                if (movePermission)
+                {
+                    TryObjectMove(pushObject, body, -rayHit.normal); // moveVector
+                }
             }
 
             return false;

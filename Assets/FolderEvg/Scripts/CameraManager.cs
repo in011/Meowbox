@@ -41,17 +41,6 @@ public class CameraManager : MonoBehaviour
             transitionValue = 0f;
             //start = 1f;
             end = 0.5f;
-
-            /*
-            // 0 0 1 1
-            if (player1)
-            {
-                camera.rect = new Rect(0f, 0f, 0.5f, 1f);
-            }
-            else
-            {
-                camera.rect = new Rect(0.5f, 0f, 0.5f, 1f);
-            }*/
         }
     }
 }

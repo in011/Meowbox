@@ -14,7 +14,6 @@ public class TestMoving : MonoBehaviour
 
     [Header("Jumping")]
     [SerializeField] float gravity = -25f;
-    [SerializeField] float gravityScale = 1f;
     [SerializeField] float jumpHeight = 2f;
     [SerializeField] float jumpCooldown = 1f;
     private bool delayedJump = false;

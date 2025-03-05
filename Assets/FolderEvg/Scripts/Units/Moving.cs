@@ -17,6 +17,7 @@ public class Moving : MonoBehaviour
     private float lastMoveTime = 0.1f;
 
     [Header("Movement")]
+    [SerializeField] private Transform cameraTransform;
     [SerializeField] float speed = 6f;
     [SerializeField] float turnSmoothTime = 0.1f; // скорость поворота в сторону движения
     [SerializeField] float fallSpeed = 20f;
@@ -145,7 +146,8 @@ public class Moving : MonoBehaviour
         else
         {
             // Camera Direction
-            direction = new Vector3(-1f, 0f, 1f) * vertical + new Vector3(1f, 0f, 1f) * horizontal;
+            //direction = new Vector3(-1f, 0f, 1f) * vertical + new Vector3(1f, 0f, 1f) * horizontal;
+            direction = cameraTransform.forward * vertical + cameraTransform.right * horizontal;
             direction.Normalize();
         }
 
