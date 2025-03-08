@@ -10,14 +10,18 @@ public class AnimPlay : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (attackable && other.CompareTag("Block"))
+        if (attackable)
         {
-            Rigidbody rb = other.attachedRigidbody;
-            Debug.Log("Open!" + rb.linearVelocity.magnitude);
-            if (rb.linearVelocity.magnitude > attackStrengh)
+            if(other.CompareTag("Block"))
             {
-                PlayTrigger("Attacked");
+                Rigidbody rb = other.attachedRigidbody;
+                Debug.Log("Open!" + rb.linearVelocity.magnitude);
+                if (rb.linearVelocity.magnitude > attackStrengh)
+                {
+                    PlayTrigger("Attacked");
+                }
             }
+            
         }
         else
         {

@@ -3,15 +3,18 @@ using System.Collections;
 
 public class DialogZone : MonoBehaviour
 {
+    [Header("Activation")]
     [SerializeField] private bool active = true;
     [SerializeField] private bool QuestItemNeeded = false;
     [SerializeField] private string ItemName = "Key_0";
+    [SerializeField] private bool restartable = false;
     private QuestItem neededItem;
 
+    [Header("Links to other dialogs")]
     [SerializeField] private DialogZone NextDialog;
     [SerializeField] private DialogZone[] AbortDialogs;
 
-    [SerializeField] private bool restartable = false;
+    [Header("Lines")]
     [SerializeField] private GameObject[] TextQueuePrefabs;
     [SerializeField] public Vector3 TextOffset = new Vector3(0, 0, 0);
     [SerializeField] public Vector3 RandomizeIntensity = new Vector3(0, 0, 0);

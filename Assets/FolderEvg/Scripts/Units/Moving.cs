@@ -207,7 +207,6 @@ public class Moving : MonoBehaviour
 
             if (pushObjectChecker.ObjectCollision())
             {
-                Debug.Log("Object");
                 Debug.Log(gameObject.transform.forward * 2);
                 float originalPushForce = pushObjectChecker.pushForce;
                 pushObjectChecker.pushForce *= dashPushPower;
@@ -286,20 +285,16 @@ public class Moving : MonoBehaviour
         IEnumerator DashTimer()
         {
             isDashing = true;
-            Debug.Log("Dashing");
             yield return new WaitForSeconds(dashTime);
 
             isDashing = false;
-            Debug.Log("Stop");
         }
         IEnumerator DashCD()
         {
             canDash = false;
-            Debug.Log("no dash");
             yield return new WaitForSeconds(dashCD);
 
             canDash = true;
-            Debug.Log("canDash!");
         }
     }
 
