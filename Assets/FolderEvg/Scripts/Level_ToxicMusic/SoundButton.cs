@@ -1,4 +1,7 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class SoundButton : MonoBehaviour
 {
