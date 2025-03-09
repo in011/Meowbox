@@ -6,6 +6,7 @@ public class AnimPlay : MonoBehaviour
     [SerializeField] private bool restart = false; // Animation can be restarted with trigger "Restart"
     [SerializeField] private bool attackable = false; // Animation can be restarted with trigger "Attacked"
     [SerializeField] private float attackStrengh = 7.5f; // block push speed needed to trigger animation
+    [SerializeField] private string triggerName = "Start";
 
 
     private void OnTriggerEnter(Collider other)
@@ -18,7 +19,7 @@ public class AnimPlay : MonoBehaviour
                 Debug.Log("Open!" + rb.linearVelocity.magnitude);
                 if (rb.linearVelocity.magnitude > attackStrengh)
                 {
-                    PlayTrigger("Attacked");
+                    PlayTrigger(triggerName);
                 }
             }
             
@@ -26,9 +27,9 @@ public class AnimPlay : MonoBehaviour
         else
         {
             // if not pushable start
-            if (other.CompareTag("Player1") || other.CompareTag("Player2") || other.CompareTag("Block"))
+            if (other.CompareTag("Player1") || other.CompareTag("Player2"))
             {
-                PlayTrigger("Start");
+                PlayTrigger(triggerName);
             }
         }
     }
@@ -37,9 +38,26 @@ public class AnimPlay : MonoBehaviour
     {
         if (restart)
         {
-            if (other.CompareTag("Player1") || other.CompareTag("Player2") || other.CompareTag("Block"))
+            if (attackable)
             {
-                PlayTrigger("Restart");
+                if (other.CompareTag("Block"))
+                {
+                    Rigidbody rb = other.attachedRigidbody;
+                    Debug.Log("Open!" + rb.linearVelocity.magnitude);
+                    if (rb.linearVelocity.magnitude > attackStrengh)
+                    {
+                        PlayTrigger("Restart");
+                    }
+                }
+
+            }
+            else
+            {
+                // if not pushable start
+                if (other.CompareTag("Player1") || other.CompareTag("Player2"))
+                {
+                    PlayTrigger("Restart");
+                }
             }
         }
     }

@@ -71,7 +71,12 @@ public class GameManager : MonoBehaviour
             player1Script.safePos = player2.transform.position;
         }
         player1.transform.position = player1Script.safePos;
-        player1.SetActive(false);
+        /*foreach (Transform child in player1.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        player1.GetComponent<CharacterController>().enabled = false;*/
+        //player1.SetActive(false);
         Invoke(nameof(RespawnPlayer1), 6); // ResetJump jumpCooldown       
         StartCoroutine(Timer(5));
     }
@@ -91,7 +96,11 @@ public class GameManager : MonoBehaviour
             player2Script.safePos = player1.transform.position;
         }
         player2.transform.position = player2Script.safePos;
-        player2.SetActive(false);
+        /*foreach (Transform child in player2.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        player2.GetComponent<CharacterController>().enabled = false;*/
         Invoke(nameof(RespawnPlayer2), 6); // ResetJump jumpCooldown       
         StartCoroutine(Timer(5));
     }
@@ -100,16 +109,25 @@ public class GameManager : MonoBehaviour
     {
         player1Dead = false;
         Debug.Log("Revived Cat!");
-        player1.SetActive(true);
-        player1.transform.position = player2.transform.position;
+        /*foreach (Transform child in player1.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+        player1.GetComponent<CharacterController>().enabled = true;*/
+        // player1.SetActive(true);
+        //player1.transform.position = player2.transform.position;
         player1Script.Revive();
     }
     private void RespawnPlayer2()
     {
         player2Dead = false;
         Debug.Log("Revived Cat!");
-        player2.SetActive(true);
-        player2.transform.position = player1.transform.position;
+        /*foreach (Transform child in player2.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+        player2.GetComponent<CharacterController>().enabled = true;*/
+        //player2.transform.position = player1.transform.position;
         player2Script.Revive();
     }
 

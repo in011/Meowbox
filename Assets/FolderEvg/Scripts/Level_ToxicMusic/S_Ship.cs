@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelLoader : MonoBehaviour
+public class S_Ship : MonoBehaviour
 {
     [SerializeField] int levelToChange;
-    [SerializeField] private bool twoPlayersToFinish = true;
+    [SerializeField] private float startLevelTime = 1.5f;
     private bool player1 = false;
     private bool player2 = false;
 
@@ -13,23 +13,14 @@ public class LevelLoader : MonoBehaviour
         if (other.tag == "Player1")
         {
             player1 = true;
-            if (!twoPlayersToFinish)
-            {
-                SceneManager.LoadScene(levelToChange);
-            }
             CheckPlayers();
         }
         if (other.tag == "Player2")
         {
             player2 = true;
-            if (!twoPlayersToFinish)
-            {
-                SceneManager.LoadScene(levelToChange);
-            }
             CheckPlayers();
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player1")
@@ -41,12 +32,16 @@ public class LevelLoader : MonoBehaviour
             player2 = false;
         }
     }
-
     private void CheckPlayers()
     {
-        if(player1 &&  player2)
+        if (player1 && player2)
         {
-            SceneManager.LoadScene(levelToChange);
+            gameObject.GetComponent<S_MovingPlatform>().StartMoving();
+            Invoke("SwimAway", startLevelTime);
         }
+    }
+    private void SwimAway()
+    {
+        SceneManager.LoadScene(levelToChange);
     }
 }

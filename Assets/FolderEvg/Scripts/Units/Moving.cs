@@ -57,7 +57,7 @@ public class Moving : MonoBehaviour
 
     [Header("Respawn")]
     [SerializeField] public Vector3 safePos;
-    private bool alive = true;
+    private bool activated = true;
 
     private void Start()
     {
@@ -86,7 +86,7 @@ public class Moving : MonoBehaviour
 
     void Update()
     {
-        if (alive)
+        if (activated)
         {
             if (Input.GetKeyDown(KeyCode.F1))
             {
@@ -116,7 +116,7 @@ public class Moving : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (alive)
+        if (activated)
         {
             Move();
         }
@@ -231,7 +231,7 @@ public class Moving : MonoBehaviour
         {
             currentForce = 0; // обнуляем накопленную силу толчка
 
-            if (controller.isGrounded && readyToJump && alive)
+            if (controller.isGrounded && readyToJump && activated)
             {
                 readyToJump = false;
                 PushUp();
@@ -300,13 +300,30 @@ public class Moving : MonoBehaviour
 
     public void Death()
     {
-        alive = false;
+        Deactivate();
     }
-
+    public void Deactivate()
+    {
+        activated = false;
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        gameObject.GetComponent<CharacterController>().enabled = false;
+    }
     public void Revive()
     {
-        alive = true;
+        Reactivate();
         canDash = true;
+    }
+    public void Reactivate()
+    {
+        activated = true;
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+        gameObject.GetComponent<CharacterController>().enabled = true;
     }
 
     IEnumerator SitTimer(float seconds)
