@@ -13,13 +13,19 @@ public class S_MovingPlatform : MonoBehaviour
 
     private float _timeToWaypoint;
     private float _elapsedTime;
-
+    
     void Start()
     {
         if (!asleep)
         {
             TargetNextWaypoint();
         }
+        gameObject.GetComponent<S_MovingPlatform>().enabled = false;
+        Invoke(nameof(TurnOnOff), 0.01f);
+    }
+    public void TurnOnOff()
+    {
+        gameObject.GetComponent<S_MovingPlatform>().enabled = true;
     }
 
     public void StartMoving()
@@ -63,11 +69,19 @@ public class S_MovingPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.transform.SetParent(transform);
+        if (other.CompareTag("Player1") || other.CompareTag("Player2") || other.CompareTag("Block"))
+        {
+            other.transform.SetParent(transform);
+        }
+        Debug.Log("Child " + other.gameObject.name);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.transform.SetParent(null);
+        if (other.CompareTag("Player1") || other.CompareTag("Player2") || other.CompareTag("Block"))
+        {
+            other.transform.SetParent(null);
+        }
+        Debug.Log("Delete Child " + other.gameObject.name);
     }
 }
