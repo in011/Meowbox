@@ -17,6 +17,7 @@ public class Moving : MonoBehaviour
     private float lastMoveTime = 0.1f;
 
     [Header("Movement")]
+    [SerializeField] private Transform cameraTransform;
     [SerializeField] float speed = 6f;
     [SerializeField] float turnSmoothTime = 0.1f; // скорость поворота в сторону движения
     [SerializeField] float fallSpeed = 20f;
@@ -56,7 +57,7 @@ public class Moving : MonoBehaviour
 
     [Header("Respawn")]
     [SerializeField] public Vector3 safePos;
-    private bool alive = true;
+    private bool activated = true;
 
     private void Start()
     {
@@ -85,7 +86,7 @@ public class Moving : MonoBehaviour
 
     void Update()
     {
-        if (alive)
+        if (activated)
         {
             if (Input.GetKeyDown(KeyCode.F1))
             {
@@ -115,7 +116,7 @@ public class Moving : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (alive)
+        if (activated)
         {
             Move();
         }
@@ -145,7 +146,8 @@ public class Moving : MonoBehaviour
         else
         {
             // Camera Direction
-            direction = new Vector3(-1f, 0f, 1f) * vertical + new Vector3(1f, 0f, 1f) * horizontal;
+            //direction = new Vector3(-1f, 0f, 1f) * vertical + new Vector3(1f, 0f, 1f) * horizontal;
+            direction = cameraTransform.forward * vertical + cameraTransform.right * horizontal;
             direction.Normalize();
         }
 
@@ -205,7 +207,6 @@ public class Moving : MonoBehaviour
 
             if (pushObjectChecker.ObjectCollision())
             {
-                Debug.Log("Object");
                 Debug.Log(gameObject.transform.forward * 2);
                 float originalPushForce = pushObjectChecker.pushForce;
                 pushObjectChecker.pushForce *= dashPushPower;
@@ -230,7 +231,7 @@ public class Moving : MonoBehaviour
         {
             currentForce = 0; // обнуляем накопленную силу толчка
 
-            if (controller.isGrounded && readyToJump && alive)
+            if (controller.isGrounded && readyToJump && activated)
             {
                 readyToJump = false;
                 PushUp();
@@ -284,32 +285,45 @@ public class Moving : MonoBehaviour
         IEnumerator DashTimer()
         {
             isDashing = true;
-            Debug.Log("Dashing");
             yield return new WaitForSeconds(dashTime);
 
             isDashing = false;
-            Debug.Log("Stop");
         }
         IEnumerator DashCD()
         {
             canDash = false;
-            Debug.Log("no dash");
             yield return new WaitForSeconds(dashCD);
 
             canDash = true;
-            Debug.Log("canDash!");
         }
     }
 
     public void Death()
     {
-        alive = false;
+        Deactivate();
     }
-
+    public void Deactivate()
+    {
+        activated = false;
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        gameObject.GetComponent<CharacterController>().enabled = false;
+    }
     public void Revive()
     {
-        alive = true;
+        Reactivate();
         canDash = true;
+    }
+    public void Reactivate()
+    {
+        activated = true;
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+        gameObject.GetComponent<CharacterController>().enabled = true;
     }
 
     IEnumerator SitTimer(float seconds)

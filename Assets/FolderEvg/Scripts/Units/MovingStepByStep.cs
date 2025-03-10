@@ -8,13 +8,11 @@ public class MovingStepByStep : MonoBehaviour
     CharacterController controller;
     SbS_PushObject pushObjectChecker;
 
-    [SerializeField] float speed = 6f;
     float turnSmoothTime = 0.01f; // скорость поворота в сторону движения
     private float turnSmoothVelocity;
 
     [Header("Jumping")]
     [SerializeField] float gravity = -25f;
-    [SerializeField] float gravityScale = 10f;
     [SerializeField] float jumpHeight = 2f;
     [SerializeField] float jumpCooldown = 1f;
 
@@ -27,7 +25,6 @@ public class MovingStepByStep : MonoBehaviour
     private bool alive = true;
     public Vector3 safePos;
 
-    bool moving = false;
     bool movingFB = false; // forward or back
     bool movingLR = false; // left or right
     Vector3 targetLocation = new Vector3(0f,0f,0f);

@@ -13,6 +13,7 @@ public class PushObject : MonoBehaviour
     RaycastHit rayHit;
     [SerializeField] float checkDistance = 2f;
     [SerializeField] public float pushForce = 1f; // 14.25f - old
+    [SerializeField] private LayerMask blockLayerMask; // LayerMask for filtering collisions
 
     RaycastHit testRayHit;
     GameObject floor;
@@ -24,7 +25,7 @@ public class PushObject : MonoBehaviour
     /// <returns></returns>
     public bool ObjectCollisionCheck(Vector3 moveVector, bool movePermission, bool StepMovement)
     {
-        if (Physics.Raycast(transform.position, transform.forward, out rayHit, checkDistance))
+        if (Physics.Raycast(transform.position, transform.forward, out rayHit, checkDistance, blockLayerMask))
         {
             Rigidbody body = rayHit.collider.attachedRigidbody;
             GameObject pushObject = rayHit.collider.gameObject;
@@ -51,6 +52,7 @@ public class PushObject : MonoBehaviour
             {
                 TryObjectMove(pushObject, body, -rayHit.normal); // moveVector
             }
+
 
             return false;
         }

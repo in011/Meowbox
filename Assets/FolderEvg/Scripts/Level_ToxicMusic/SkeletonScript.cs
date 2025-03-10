@@ -18,11 +18,11 @@ public class SkeletonScript : MonoBehaviour
     {
         if (other.CompareTag("Block") && !awake)
         {
-            awake = true;
             Rigidbody rb = other.attachedRigidbody;
-            if (rb.linearVelocity.magnitude > attackStrengh)
+
+            if (-rb.linearVelocity.y > attackStrengh)
             {
-                Debug.Log("Music Play");
+                awake = true;
 
                 PlayMusic();
             }

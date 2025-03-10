@@ -25,7 +25,7 @@ public class AbilityManager : MonoBehaviour
 
     public void Cat1Petrify(Vector3 pos, Quaternion rot)
     {
-        player1.SetActive(false);
+        player1.GetComponent<Moving>().Deactivate();
         petrifCat1 = Instantiate(petrifiedPrefab1, pos, petrifiedPrefab1.transform.rotation);
         petrifCat1.GetComponent<PetrifiedCat>().player2 = false;
 
@@ -35,7 +35,7 @@ public class AbilityManager : MonoBehaviour
     {
         isRock1 = false;
         player1.transform.position = pos;
-        player1.SetActive(true);
+        player1.GetComponent<Moving>().Reactivate();
         player1.GetComponent<Petrification>().PetryfyReset();
         player1.GetComponent<Moving>().PushUp();
     }
@@ -47,7 +47,7 @@ public class AbilityManager : MonoBehaviour
     public void Cat2Petrify(Vector3 pos, Quaternion rot)
     {
 
-        player2.SetActive(false);
+        player2.GetComponent<Moving>().Deactivate();
         petrifCat2 = Instantiate(petrifiedPrefab2, pos + new Vector3(0f,1f,0f), petrifiedPrefab2.transform.rotation);
         petrifCat2.GetComponent<PetrifiedCat>().player2 = true;
         
@@ -57,7 +57,7 @@ public class AbilityManager : MonoBehaviour
     {
         isRock2 = false;
         player2.transform.position = pos;
-        player2.SetActive(true);
+        player2.GetComponent<Moving>().Reactivate();
         player2.GetComponent<Petrification>().PetryfyReset();
         player2.GetComponent<Moving>().PushUp();
     }
