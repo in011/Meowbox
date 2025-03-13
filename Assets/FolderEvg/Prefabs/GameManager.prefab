@@ -45,9 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60d9ffb36264ad4195629f30168a3a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
+  hint: {fileID: 1418208534888584760, guid: b57d091cb88f7ea42a7b2c7339167ff8, type: 3}
+  pauseMenu: {fileID: 3323019932775905822, guid: 533b9c685c4ff4443a367261023409fd, type: 3}
+  gameOverMenu: {fileID: 3323019932775905822, guid: 533b9c685c4ff4443a367261023409fd, type: 3}
+  onPlayerRespawn: 0
   player1: {fileID: 0}
+  player1Dead: 0
   player2: {fileID: 0}
+  player2Dead: 0
   score: 0
   scoreNeeded: 1000
   portal: {fileID: 0}
