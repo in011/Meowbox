@@ -3,6 +3,10 @@ using System.Collections;
 
 public class SkeletonScript : MonoBehaviour
 {
+    //[SerializeField] private Animator skeletonAC;
+    [SerializeField] private GameObject skeletonSitting;
+    [SerializeField] private GameObject skeletonPlaying;
+
     [SerializeField] private GameObject[] _KeySounds;
     [SerializeField] private Transform soundSpawn; // place where sounds will be spawned
     [SerializeField] private float attackStrengh = 7.5f; // block push speed needed to trigger animation
@@ -25,6 +29,9 @@ public class SkeletonScript : MonoBehaviour
                 awake = true;
 
                 PlayMusic();
+                skeletonSitting.SetActive(false);
+                skeletonPlaying.SetActive(true);
+                //skeletonAC.SetBool("Playing", true);
             }
         }
     }
