@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class PushObject : MonoBehaviour
 {

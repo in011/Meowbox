@@ -3,6 +3,7 @@ using UnityEngine;
 public class BreakableWall : MonoBehaviour
 {
     [SerializeField] private GameObject brokenWall;
+    [SerializeField] private float pushStr = 5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,9 +15,9 @@ public class BreakableWall : MonoBehaviour
         if (other.CompareTag("Block"))
         {
             Rigidbody rb = other.attachedRigidbody;
-            if (rb.linearVelocity.magnitude > 10f)
+            if (rb.linearVelocity.magnitude > pushStr)
             {
-                Instantiate(brokenWall, gameObject.transform);
+                //Instantiate(brokenWall, gameObject.transform);
                 gameObject.SetActive(false);
             }        
         }
