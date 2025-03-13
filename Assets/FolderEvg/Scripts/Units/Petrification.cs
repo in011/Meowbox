@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Petrification : MonoBehaviour
 {
-    [SerializeField] private bool hasPetrificationAbility = false;
+    [SerializeField] public bool hasPetrificationAbility = false;
     [SerializeField] private KeyCode petrifyButton = KeyCode.LeftShift;
     [SerializeField] private float petrificationCD = 1.5f;
     private bool canPetrify = true;

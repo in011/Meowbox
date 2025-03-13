@@ -12,7 +12,7 @@ public class Moving : MonoBehaviour
     [SerializeField] public bool player2 = false;
     CharacterController controller;
     PushObject pushObjectChecker;
-    [SerializeField] Animator animator;
+    [SerializeField] public Animator animator;
     [SerializeField] float sitTimer = 5f;
     private float lastMoveTime = 0.1f;
 
@@ -39,7 +39,7 @@ public class Moving : MonoBehaviour
 
     [Header("Dash")]
     [SerializeField] private KeyCode abilityButton = KeyCode.LeftShift;
-    [SerializeField] private bool hasDashAbility = true;
+    [SerializeField] public bool hasDashAbility = false;
     [SerializeField] private float dashSpeed = 6f;
     [SerializeField] private float dashTime = 0.1f;
     [SerializeField] private float dashCD = 3f;
@@ -100,17 +100,17 @@ public class Moving : MonoBehaviour
             PlayerInput();
             Jump();
             Dash();
-        }
 
-        if (controller.velocity.magnitude > 0.1 && controller.isGrounded)
-        {
-            audioSource.UnPause();
-            //audioSource.Play();
-        }
-        else
-        {
-            audioSource.Pause();
-            //audioSource.Stop();
+            if (controller.velocity.magnitude > 0.1 && controller.isGrounded)
+            {
+                audioSource.UnPause();
+                //audioSource.Play();
+            }
+            else
+            {
+                audioSource.Pause();
+                //audioSource.Stop();
+            }
         }
     }
 
@@ -207,7 +207,6 @@ public class Moving : MonoBehaviour
 
             if (pushObjectChecker.ObjectCollision())
             {
-                Debug.Log(gameObject.transform.forward * 2);
                 float originalPushForce = pushObjectChecker.pushForce;
                 pushObjectChecker.pushForce *= dashPushPower;
                 pushObjectChecker.ObjectCollisionCheck(gameObject.transform.forward * 2, true, false);
@@ -297,13 +296,15 @@ public class Moving : MonoBehaviour
             canDash = true;
         }
     }
-
+    
     public void Death()
     {
         Deactivate();
     }
     public void Deactivate()
     {
+        audioSource.Pause();
+
         activated = false;
         foreach (Transform child in transform)
         {

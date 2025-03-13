@@ -62,7 +62,7 @@ public class PushObject : MonoBehaviour
     // Возвращает true, если перед нами препятствие, которое можно двигать
     public bool ObjectCollision()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out rayHit, checkDistance))
+        if (Physics.Raycast(transform.position, transform.forward, out rayHit, checkDistance, blockLayerMask))
         {
             Rigidbody body = rayHit.collider.attachedRigidbody;
             GameObject pushObject = rayHit.collider.gameObject;

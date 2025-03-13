@@ -1,9 +1,11 @@
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] private bool gameover = false;
 
     public void Pause()
     {
@@ -14,6 +16,15 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
 
     }
+    void Update()
+    {
+        // Call Pause Menu
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameover)
+        {
+            Resume();
+        }
+    }
+
     public void Resume()
     {
         pauseMenu.SetActive(false);

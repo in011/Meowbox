@@ -2,21 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
     AudioManager audioManager;
     LevelLoader levelLoader;
+    [SerializeField] public HintPause hint;
     [SerializeField] PauseMenu pauseMenu;
+    [SerializeField] PauseMenu gameOverMenu;
+    private bool gameover = false;
 
     [SerializeField] private bool onPlayerRespawn = false;
     [SerializeField] public GameObject player1;
     private Moving player1Script;
-    private bool player1Dead = false;
+    public bool player1Dead = false;
     [SerializeField] public GameObject player2;
     private Moving player2Script;
-    private bool player2Dead = false;
+    public bool player2Dead = false;
 
     [SerializeField] private int score = 0;
     [SerializeField] private int scoreNeeded = 1000;
@@ -49,7 +51,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         // Call Pause Menu
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !gameover)
         {
             pauseMenu.Pause();
         }
@@ -63,6 +65,8 @@ public class GameManager : MonoBehaviour
         if (player2Dead)
         {
             Debug.Log("GAME OVER!");
+            gameOverMenu.Pause();
+            gameover = true;
         }
 
         player1Script.Death();
@@ -71,14 +75,8 @@ public class GameManager : MonoBehaviour
             player1Script.safePos = player2.transform.position;
         }
         player1.transform.position = player1Script.safePos;
-        /*foreach (Transform child in player1.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-        player1.GetComponent<CharacterController>().enabled = false;*/
-        //player1.SetActive(false);
         Invoke(nameof(RespawnPlayer1), 6); // ResetJump jumpCooldown       
-        StartCoroutine(Timer(5));
+        //StartCoroutine(Timer(5));
     }
     public void Player2Death()
     {
@@ -88,6 +86,8 @@ public class GameManager : MonoBehaviour
         if (player1Dead)
         {
             Debug.Log("GAME OVER!");
+            gameOverMenu.Pause();
+            gameover = true;
         }
 
         player2Script.Death();
@@ -96,38 +96,18 @@ public class GameManager : MonoBehaviour
             player2Script.safePos = player1.transform.position;
         }
         player2.transform.position = player2Script.safePos;
-        /*foreach (Transform child in player2.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-        player2.GetComponent<CharacterController>().enabled = false;*/
         Invoke(nameof(RespawnPlayer2), 6); // ResetJump jumpCooldown       
-        StartCoroutine(Timer(5));
+        //StartCoroutine(Timer(5));
     }
 
     private void RespawnPlayer1()
     {
         player1Dead = false;
-        Debug.Log("Revived Cat!");
-        /*foreach (Transform child in player1.transform)
-        {
-            child.gameObject.SetActive(true);
-        }
-        player1.GetComponent<CharacterController>().enabled = true;*/
-        // player1.SetActive(true);
-        //player1.transform.position = player2.transform.position;
         player1Script.Revive();
     }
     private void RespawnPlayer2()
     {
         player2Dead = false;
-        Debug.Log("Revived Cat!");
-        /*foreach (Transform child in player2.transform)
-        {
-            child.gameObject.SetActive(true);
-        }
-        player2.GetComponent<CharacterController>().enabled = true;*/
-        //player2.transform.position = player1.transform.position;
         player2Script.Revive();
     }
 

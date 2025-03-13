@@ -23,4 +23,18 @@ public class PetrifiedCat : BaseBlock
         abilityManager.Cat2Restore(gameObject.transform.position + new Vector3(0f, 3f, 0f), gameObject.transform.rotation);
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Boss boss;
+        if (other.TryGetComponent<Boss>(out boss))
+        {
+            if (boss.stoned && !boss.hurt && !boss.angry)
+            {
+                Debug.Log("Hurt!");
+
+                boss.Damage();
+            }
+        }
+    }
 }

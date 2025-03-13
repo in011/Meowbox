@@ -44,7 +44,7 @@ public class LevelLoader : MonoBehaviour
 
     private void CheckPlayers()
     {
-        if(player1 &&  player2)
+        if(player1 && player2)
         {
             SceneManager.LoadScene(levelToChange);
         }
