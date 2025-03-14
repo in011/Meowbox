@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7302545108850283399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 630416915712426130}
+  - component: {fileID: 1923922986728642745}
+  - component: {fileID: 2515009654341448810}
+  m_Layer: 0
+  m_Name: DZ_Knock1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &630416915712426130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302545108850283399}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1923922986728642745
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302545108850283399}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12, y: 4, z: 12}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2515009654341448810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7302545108850283399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c973797bae02b749ada93ebf577b618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  QuestItemNeeded: 0
+  ItemName: Key_0
+  restartable: 0
+  NextDialog: {fileID: 0}
+  AbortDialogs:
+  - {fileID: 0}
+  TextQueuePrefabs:
+  - {fileID: 9130874504576483394, guid: 3a55641b2e939aa449a7dd84ea25a7c4, type: 3}
+  - {fileID: 2999929314268215081, guid: 14d25402ab4c4ed43b540dc7638085c9, type: 3}
+  - {fileID: 899013566005568430, guid: 96a4bba954b81444db712de39c7a714b, type: 3}
+  - {fileID: 8647609701280749382, guid: 844cdb0cfaaa7ce47b7e66568aa2c3a6, type: 3}
+  - {fileID: 1470425028593008744, guid: 7fd8087ab0d2c734798a39796f10e600, type: 3}
+  - {fileID: 3386616989420371143, guid: a0e4a91edac2441438a855c2ac9a8d0a, type: 3}
+  TextOffset: {x: 0, y: 3, z: -5}
+  RandomizeIntensity: {x: 0, y: 0, z: 0}
