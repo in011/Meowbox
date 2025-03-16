@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    [SerializeField] int levelToChange;
+    [SerializeField] int specificLevel = -1;
     [SerializeField] private bool twoPlayersToFinish = true;
     private bool player1 = false;
     private bool player2 = false;
@@ -15,7 +15,14 @@ public class LevelLoader : MonoBehaviour
             player1 = true;
             if (!twoPlayersToFinish)
             {
-                SceneManager.LoadScene(levelToChange);
+                if(specificLevel >= 0)
+                {
+                    SceneManager.LoadScene(specificLevel);
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
             }
             CheckPlayers();
         }
@@ -24,7 +31,14 @@ public class LevelLoader : MonoBehaviour
             player2 = true;
             if (!twoPlayersToFinish)
             {
-                SceneManager.LoadScene(levelToChange);
+                if (specificLevel >= 0)
+                {
+                    SceneManager.LoadScene(specificLevel);
+                }
+                else
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
             }
             CheckPlayers();
         }
@@ -46,7 +60,14 @@ public class LevelLoader : MonoBehaviour
     {
         if(player1 && player2)
         {
-            SceneManager.LoadScene(levelToChange);
+            if (specificLevel >= 0)
+            {
+                SceneManager.LoadScene(specificLevel);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
     }
 }

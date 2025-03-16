@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class S_Ship : MonoBehaviour
 {
-    [SerializeField] int levelToChange;
+    [SerializeField] int NextLevel = -1;
     [SerializeField] private float startLevelTime = 1.5f;
     private bool player1 = false;
     private bool player2 = false;
@@ -42,6 +42,13 @@ public class S_Ship : MonoBehaviour
     }
     private void SwimAway()
     {
-        SceneManager.LoadScene(levelToChange);
+        if (NextLevel >= 0)
+        {
+            SceneManager.LoadScene(NextLevel);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
