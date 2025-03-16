@@ -7,6 +7,8 @@ public class AnimPlay : MonoBehaviour
     [SerializeField] private bool attackable = false; // Animation can be restarted with trigger "Attacked"
     [SerializeField] private float attackStrengh = 7.5f; // block push speed needed to trigger animation
     [SerializeField] private string triggerName = "Start";
+    [SerializeField] private ParticleSystem[] vfx;
+    [SerializeField] private float vfxOffTime = 0f; 
 
 
     private void OnTriggerEnter(Collider other)
@@ -20,6 +22,17 @@ public class AnimPlay : MonoBehaviour
                 if (rb.linearVelocity.magnitude > attackStrengh)
                 {
                     PlayTrigger(triggerName);
+                    foreach (ParticleSystem effect in vfx)
+                    {
+                        if (effect != null)
+                        {
+                            effect.Play();
+                            if(vfxOffTime <= 0)
+                            {
+                                Invoke(nameof(VfxOff), vfxOffTime);
+                            }
+                        }
+                    }
                 }
             }
             
@@ -30,6 +43,17 @@ public class AnimPlay : MonoBehaviour
             if (other.CompareTag("Player1") || other.CompareTag("Player2"))
             {
                 PlayTrigger(triggerName);
+                foreach (ParticleSystem effect in vfx)
+                {
+                    if (effect != null)
+                    {
+                        effect.Play();
+                        if (vfxOffTime <= 0)
+                        {
+                            Invoke(nameof(VfxOff), vfxOffTime);
+                        }
+                    }
+                }
             }
         }
     }
@@ -66,6 +90,16 @@ public class AnimPlay : MonoBehaviour
         foreach(Animator anim in  _animators)
         {
             anim.SetTrigger(trigStr);
+        }
+    }
+    private void VfxOff()
+    {
+        foreach (ParticleSystem effect in vfx)
+        {
+            if (effect)
+            {
+                effect.Stop();
+            }
         }
     }
 }

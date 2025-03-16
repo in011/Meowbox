@@ -5,13 +5,18 @@ public class DialogZone : MonoBehaviour
 {
     [Header("Activation")]
     [SerializeField] private bool active = true;
+    [SerializeField] private bool restartable = false;
+    [SerializeField] private bool addNextLevelScore = false;
+
+    [Header("QuestItems")]
     [SerializeField] private bool QuestItemNeeded = false;
     [SerializeField] private string ItemName = "Key_0";
-    [SerializeField] private bool restartable = false;
     private QuestItem neededItem;
+    [SerializeField] private GameObject[] ActivateObjects;
+    [SerializeField] private GameObject[] DeactivateObjects;
 
     [Header("Links to other dialogs")]
-    [SerializeField] private DialogZone NextDialog;
+    [SerializeField] private DialogZone[] NextDialog;
     [SerializeField] private DialogZone[] AbortDialogs;
 
     [Header("Lines")]
@@ -89,13 +94,37 @@ public class DialogZone : MonoBehaviour
             yield return new WaitForSeconds(LineLifetime); // Wait before spawning the next object
         }
 
-        if (NextDialog)
+        foreach (DialogZone dialog in NextDialog)
         {
-            NextDialog.active = true;
+            if (dialog)
+            {
+                dialog.active = true;
+            }
+            else
+            {
+                Debug.Log("NoDialog");
+            }
         }
-        else
+
+        foreach(GameObject obj in ActivateObjects)
         {
-            Debug.Log("NoDialog");
+            if (obj)
+            {
+                obj.SetActive(true);
+            }            
+        }
+
+        foreach (GameObject obj in DeactivateObjects)
+        {
+            if (obj)
+            {
+                obj.SetActive(false);
+            }            
+        }
+
+        if (addNextLevelScore)
+        {
+            FindAnyObjectByType<GameManager>().AddScore(1);
         }
     }
 
@@ -103,7 +132,14 @@ public class DialogZone : MonoBehaviour
     {
         foreach(DialogZone dialog in AbortDialogs)
         {
-            dialog.active = false;
+            if (dialog)
+            {
+                dialog.active = false;
+            }
+            else
+            {
+                Debug.Log("NoDialog");
+            }
         }
     }
 }

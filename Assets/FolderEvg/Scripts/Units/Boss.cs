@@ -98,6 +98,19 @@ public class Boss : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        PetrifiedCat catStone;
+        if (other.TryGetComponent<PetrifiedCat>(out catStone))
+        {
+            if (stoned && !hurt && !angry)
+            {                
+                Debug.Log("Stone Hit!");
+                Damage();
+            }
+        }
+    }
+
     private void Update()
     {
         

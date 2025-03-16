@@ -154,7 +154,13 @@ public class GameManager : MonoBehaviour
     }
     private void SpawnPortal()
     {
-        Debug.Log("PORTAL");
-        Instantiate(portal, portalPlaceEmpty.transform.position, portalPlaceEmpty.transform.rotation);
+        if (portal)
+        {
+            Instantiate(portal, portalPlaceEmpty.transform.position, portalPlaceEmpty.transform.rotation);
+        }
+        else
+        {
+            Debug.Log("No portal prefab");
+        }
     }
 }
