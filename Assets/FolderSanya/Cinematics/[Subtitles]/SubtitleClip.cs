@@ -1,16 +1,18 @@
 using UnityEngine;
-using UnityEngine.Playbles;
+using UnityEngine.Playables;
 
-public class SubtitleClip : PlaybleAsset
+public class SubtitleClip : PlayableAsset
 {
     public string subtitleText;
 
-    public override Playable CreatePlayable(PlayableGraph graph, Gameobject owner)  
+    public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
+    {
 
-        var playbee = ScriptPlayable<SubtitleBehaviour>.Create(graph);
+        var playable = ScriptPlayable<SubtitleBehaviour>.Create(graph);
 
-        SubtitleBehavior subtitleBehavior = playable.GetBehavior();
+        SubtitleBehaviour subtitleBehavior = playable.GetBehaviour();
         subtitleBehavior.subtitleText = subtitleText;
 
         return playable;
+    }
 }
