@@ -8792,6 +8792,8 @@ MonoBehaviour:
   attackable: 0
   attackStrengh: 7.5
   triggerName: Start
+  vfx: []
+  vfxOffTime: 0
 --- !u!1 &1498502881
 GameObject:
   m_ObjectHideFlags: 0
@@ -8910,7 +8912,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 553828576940948693, guid: f8e834c61acf6cc4f9814609a3f980ca, type: 3}
       propertyPath: levelToChange
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3934354377415059467, guid: f8e834c61acf6cc4f9814609a3f980ca, type: 3}
       propertyPath: m_LocalPosition.x

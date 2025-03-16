@@ -46,8 +46,6 @@ public class PushObject : MonoBehaviour
             if (movePermission)
             {
                 TryObjectMove(pushObject, body, -rayHit.normal); // moveVector
-                Debug.Log("collider " + rayHit.collider);
-                Debug.Log(rayHit.normal);
             }
 
 
