@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SkeletonScript : MonoBehaviour
 {
-    //[SerializeField] private Animator skeletonAC;
+    [SerializeField] private Animator skeletonAC;
     [SerializeField] private GameObject skeletonSitting;
     [SerializeField] private GameObject skeletonPlaying;
 
@@ -31,7 +31,7 @@ public class SkeletonScript : MonoBehaviour
                 PlayMusic();
                 skeletonSitting.SetActive(false);
                 skeletonPlaying.SetActive(true);
-                //skeletonAC.SetBool("Playing", true);
+                skeletonAC.SetTrigger("Play");
             }
         }
     }
