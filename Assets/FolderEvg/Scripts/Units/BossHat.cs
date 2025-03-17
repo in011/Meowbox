@@ -20,7 +20,8 @@ public class BossHat : MonoBehaviour
                 if (!secondHintGreed)
                 {
                     currentHint = hintGreed;
-                    Invoke(nameof(CallHint), 0.1f);
+                    CallHint();
+                    //Invoke(nameof(CallHint), 0.1f);
                     secondHintGreed = true;
                 }
             }
@@ -29,7 +30,8 @@ public class BossHat : MonoBehaviour
                 if (!secondHint)
                 {
                     currentHint = hintHat;
-                    Invoke(nameof(CallHint), 0.1f);
+                    CallHint(); 
+                    //Invoke(nameof(CallHint), 0.1f);
                     secondHint = true;
                 }
 

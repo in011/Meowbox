@@ -15,6 +15,7 @@ public class BossFloor : MonoBehaviour
         audioManager.PlaySFX(audioManager.fallInLava);
         if (other.tag == "Trap")
         {
+            Debug.Log("Destroyed^" + other.gameObject.name);
             Destroy(other.gameObject);
             Destroy(gameObject);
         }

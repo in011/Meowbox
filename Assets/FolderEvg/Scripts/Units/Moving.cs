@@ -23,6 +23,8 @@ public class Moving : MonoBehaviour
     bool oldMovement = false;
 
     [Header("Jumping")]
+    [SerializeField] public KeyCode jumpButtonP1 = KeyCode.Space;
+    [SerializeField] public KeyCode jumpButtonP2 = KeyCode.RightControl;
     [SerializeField] float gravity = -25f;
     [SerializeField] float jumpHeight = 2f;
     [SerializeField] float jumpCooldown = 0f;
@@ -61,11 +63,11 @@ public class Moving : MonoBehaviour
         safePos = transform.position;
         if (!player2)
         {
-            jumpButton = KeyCode.Space;
+            jumpButton = jumpButtonP1;
         }
         else
         {
-            jumpButton = KeyCode.RightShift;
+            jumpButton = jumpButtonP2;
         }
 
         audioManager = FindAnyObjectByType<AudioManager>(); // delete later

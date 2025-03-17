@@ -82,6 +82,8 @@ MonoBehaviour:
   speed: 6
   turnSmoothTime: 0.09
   fallSpeed: 20
+  jumpButtonP1: 32
+  jumpButtonP2: 305
   gravity: -30
   jumpHeight: 2.1
   jumpCooldown: 0
@@ -222,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasPetrificationAbility: 1
-  petrifyButton: 305
+  petrifyButton: 303
   petrificationCD: 1.5
 --- !u!1 &3115406493788019301
 GameObject:
