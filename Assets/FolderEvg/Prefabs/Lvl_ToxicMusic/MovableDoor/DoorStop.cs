@@ -12,6 +12,21 @@ public class DoorStop : MonoBehaviour
         _doorAnimator = GetComponent<Animator>();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Block")
+        {
+            _doorAnimator.speed = 0f;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Block")
+        {
+            _doorAnimator.speed = 1f;
+        }
+    }
+
     void FixedUpdate()
     {
         //Test to see if there is a hit using a BoxCast
