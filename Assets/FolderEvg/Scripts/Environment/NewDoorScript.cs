@@ -35,25 +35,6 @@ public class NewDoorScript : MonoBehaviour
             objectsInside.Remove(other.gameObject);
         }
     }
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Block")
-        {
-            stop = true;
-        }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Block")
-        {
-            stop = false;
-        }
-    }*/
 
     public void Open()
     {
@@ -64,36 +45,9 @@ public class NewDoorScript : MonoBehaviour
         targetPosition = defaultPosition;
     }
 
-    public void SwitchTargetPosition()
-    {
-        if (Vector3.Distance(transform.position, addedposition) < 0.005f)
-        {
-            targetPosition = defaultPosition; // Ensure exact positioning
-        }
-        else
-        {
-            targetPosition = addedposition; // Ensure exact positioning
-        }
-    }
-
     private void FixedUpdate()
     {
-        stop = false;
-        foreach(GameObject obj in objectsInside)
-        {
-            if(obj == null)
-            {
-                objectsInside.Remove(obj);
-            }
-            else
-            {
-                if (obj.tag == "Block")
-                {
-                    stop = true;
-                    break;
-                }
-            }
-        }
+        stop = CheckCollisions();
         if (!stop)
         {
             if (Vector3.Distance(transform.position, targetPosition) > 0.1f)
@@ -105,5 +59,26 @@ public class NewDoorScript : MonoBehaviour
                 transform.position = targetPosition; // Ensure exact positioning
             }
         }
+    }
+    private bool CheckCollisions()
+    {
+        stop = false;
+        foreach (GameObject obj in objectsInside)
+        {
+            if (obj == null)
+            {
+                objectsInside.Remove(obj);
+                return CheckCollisions();
+            }
+            else
+            {
+                if (obj.tag == "Block")
+                {
+                    stop = true;
+                    break;
+                }
+            }
+        }
+        return stop;
     }
 }

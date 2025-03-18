@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraHolder : MonoBehaviour
 {
-    [SerializeField] private Transform playerObject;
+    [SerializeField] public Transform playerObject;
     [SerializeField] public KeyCode rotateRightKey = KeyCode.Q; // Key to trigger rotation Right
     [SerializeField] public KeyCode rotateLeftKey = KeyCode.E; // Key to trigger rotation Left
     [SerializeField] private float rotationAngle = 45f; // Degrees to rotate

@@ -21,7 +21,7 @@ public class DoorTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player1") || other.CompareTag("Player2") || other.CompareTag("Block"))
         {
-            //_doorAnimator.SetTrigger("Closed");
+            _doorAnimator.SetTrigger("Closed");
         }
     }
 }

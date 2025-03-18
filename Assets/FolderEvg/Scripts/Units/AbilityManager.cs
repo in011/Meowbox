@@ -6,12 +6,14 @@ public class AbilityManager : MonoBehaviour
     [Header("Petrify")]
     // White
     [SerializeField] private GameObject player1;
+    [SerializeField] private CameraHolder Camera1;
     [SerializeField] private KeyCode abilityButton1 = KeyCode.LeftShift;
     [SerializeField] private GameObject petrifiedPrefab1;
     private GameObject petrifCat1;
     private bool isRock1 = false;
     // Black
     [SerializeField] private GameObject player2;
+    [SerializeField] private CameraHolder Camera2;
     [SerializeField] private KeyCode abilityButton2 = KeyCode.RightControl;
     [SerializeField] private GameObject petrifiedPrefab2;
     private GameObject petrifCat2;
@@ -28,6 +30,7 @@ public class AbilityManager : MonoBehaviour
         player1.GetComponent<Moving>().Deactivate();
         petrifCat1 = Instantiate(petrifiedPrefab1, pos, petrifiedPrefab1.transform.rotation);
         petrifCat1.GetComponent<PetrifiedCat>().player2 = false;
+        Camera1.playerObject = petrifCat1.transform; //
 
         Invoke(nameof(WaitForSignal1), 0.1f);
     }
@@ -38,6 +41,7 @@ public class AbilityManager : MonoBehaviour
         player1.GetComponent<Moving>().Reactivate();
         player1.GetComponent<Petrification>().PetryfyReset();
         player1.GetComponent<Moving>().PushUp();
+        Camera1.playerObject = player1.transform; //
     }
     void WaitForSignal1()
     {
@@ -50,7 +54,8 @@ public class AbilityManager : MonoBehaviour
         player2.GetComponent<Moving>().Deactivate();
         petrifCat2 = Instantiate(petrifiedPrefab2, pos + new Vector3(0f,1f,0f), petrifiedPrefab2.transform.rotation);
         petrifCat2.GetComponent<PetrifiedCat>().player2 = true;
-        
+        Camera2.playerObject = petrifCat2.transform; //
+
         Invoke(nameof(WaitForSignal2), 0.1f);
     }
     public void Cat2Restore(Vector3 pos, Quaternion rot)
@@ -60,6 +65,7 @@ public class AbilityManager : MonoBehaviour
         player2.GetComponent<Moving>().Reactivate();
         player2.GetComponent<Petrification>().PetryfyReset();
         player2.GetComponent<Moving>().PushUp();
+        Camera2.playerObject = player2.transform; //
     }
     void WaitForSignal2()
     {
