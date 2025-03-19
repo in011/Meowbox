@@ -1269,7 +1269,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160032885}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -16751,6 +16751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1578423386}
   - component: {fileID: 1578423385}
+  - component: {fileID: 1578423388}
   - component: {fileID: 1578423387}
   m_Layer: 0
   m_Name: CutScene_Opening_Ver2_Unreal
@@ -16878,6 +16879,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 921facae7be0f3b429b06ac40f6baed4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeline: {fileID: 1578423385}
+  nextSceneName: Level_0Nar
+--- !u!114 &1578423388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578423384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaea7359857e09c43871c194bf103a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timeline: {fileID: 1578423385}
