@@ -54,7 +54,7 @@ public class AbilityManager : MonoBehaviour
         player2.GetComponent<Moving>().Deactivate();
         petrifCat2 = Instantiate(petrifiedPrefab2, pos + new Vector3(0f,1f,0f), petrifiedPrefab2.transform.rotation);
         petrifCat2.GetComponent<PetrifiedCat>().player2 = true;
-        // Camera2.playerObject = petrifCat2.transform; //
+        Camera2.playerObject = petrifCat2.transform; //
 
         Invoke(nameof(WaitForSignal2), 0.1f);
     }
