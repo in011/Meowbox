@@ -82,6 +82,8 @@ MonoBehaviour:
   speed: 6
   turnSmoothTime: 0.09
   fallSpeed: 20
+  jumpButtonP1: 32
+  jumpButtonP2: 305
   gravity: -30
   jumpHeight: 2.1
   jumpCooldown: 0
@@ -92,7 +94,7 @@ MonoBehaviour:
   hasDashAbility: 1
   dashSpeed: 6
   dashTime: 0.1
-  dashCD: 1.5
+  dashCD: 0.35
   dashPushPower: 2
   safePos: {x: 0, y: 0, z: 0}
 --- !u!114 &6571062116611027755
