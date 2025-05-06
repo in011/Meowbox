@@ -14,6 +14,13 @@ public class SubtitleTrackMixer : PlayableBehaviour
         string currentText = "";
         bool hasActiveClip = false;
 
+        // Стили по умолчанию (если нет активного клипа)
+        TMP_FontAsset currentFont = text.font;
+        FontStyles currentStyle = FontStyles.Normal;
+        Color currentColor = Color.white;
+        bool currentUnderline = false;
+        float currentFontSize = 0f;
+
         int inputCount = playable.GetInputCount();
         for (int i = 0; i < inputCount; i++)
         {
@@ -22,13 +29,27 @@ public class SubtitleTrackMixer : PlayableBehaviour
             {
                 ScriptPlayable<SubtitleBehaviour> inputPlayable = (ScriptPlayable<SubtitleBehaviour>)playable.GetInput(i);
                 SubtitleBehaviour input = inputPlayable.GetBehaviour();
+
                 currentText = input.subtitleText;
+                currentFont = input.fontAsset ?? currentFont; // Если шрифт не задан, оставляем текущий
+                currentStyle = input.fontStyle;
+                currentColor = input.textColor;
+                currentUnderline = input.underline;
+                currentFontSize = input.fontSize;
                 hasActiveClip = true;
             }
         }
 
+        // Применяем стили
         text.text = currentText;
-        text.color = new Color(1, 1, 1, info.weight);
+        text.font = currentFont;
+        text.fontStyle = currentUnderline ? currentStyle | FontStyles.Underline : currentStyle; // Добавляем подчёркивание, если нужно
+        text.color = new Color(currentColor.r, currentColor.g, currentColor.b, info.weight); // Альфа-канал зависит от веса
+
+        if (currentFontSize > 0f)
+        {
+            text.fontSize = currentFontSize;
+        }
 
         if (background != null)
         {
@@ -39,18 +60,16 @@ public class SubtitleTrackMixer : PlayableBehaviour
             {
                 Canvas.ForceUpdateCanvases();
                 Vector2 textSize = text.GetPreferredValues(currentText);
-                float paddingX = 40f; // Увеличенные отступы по ширине
-                float paddingY = 20f; // Увеличенные отступы по высоте
+                float paddingX = 40f;
+                float paddingY = 20f;
 
-                // Размер подложки (с минимальными значениями)
                 background.rectTransform.sizeDelta = new Vector2(
                     Mathf.Max(120f, textSize.x + paddingX),
                     Mathf.Max(60f, textSize.y + paddingY)
                 );
 
-                // Жёсткая фиксация центра текста
                 text.rectTransform.anchoredPosition = Vector2.zero;
-                text.alignment = TextAlignmentOptions.Center; // Выравнивание по центру
+                text.alignment = TextAlignmentOptions.Center;
             }
         }
     }
