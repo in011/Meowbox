@@ -89,7 +89,7 @@ MonoBehaviour:
   jumpCooldown: 0
   delayedJumpWait: 0.5
   accumulatingForce: 1
-  forceNeeded: 20
+  forceNeeded: 1
   abilityButton: 304
   hasDashAbility: 1
   dashSpeed: 6
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkDistance: 1
-  pushForce: 1
+  pushForce: 0.25
   blockLayerMask:
     serializedVersion: 2
     m_Bits: 64

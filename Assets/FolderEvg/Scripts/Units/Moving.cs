@@ -173,7 +173,7 @@ public class Moving : MonoBehaviour
 
                 if (currentForce > forceNeeded)
                 {
-                    audioManager.PlaySFX(audioManager.rockPush);
+                    //audioManager.PlaySFX(audioManager.rockPush);
 
                     pushObjectChecker.ObjectCollisionCheck(direction * 2, true, false);
                     currentForce = 0f;
@@ -207,7 +207,7 @@ public class Moving : MonoBehaviour
             if (pushObjectChecker.ObjectCollision())
             {
                 float originalPushForce = pushObjectChecker.pushForce;
-                pushObjectChecker.pushForce *= dashPushPower;
+                pushObjectChecker.pushForce = dashPushPower;
                 pushObjectChecker.ObjectCollisionCheck(gameObject.transform.forward * 2, true, false);
                 pushObjectChecker.pushForce = originalPushForce;
                 isDashing = false;
