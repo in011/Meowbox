@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class Moving : MonoBehaviour
@@ -14,6 +15,7 @@ public class Moving : MonoBehaviour
     private float lastMoveTime = 0.1f;
 
     [Header("Movement")]
+    [SerializeField] public CinemachineFollow virtualCamera;
     [SerializeField] private Transform cameraTransform;
     [SerializeField] float speed = 6f;
     [SerializeField] float turnSmoothTime = 0.1f; // скорость поворота в сторону движения

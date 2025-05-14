@@ -4,20 +4,24 @@ public class Block : BaseBlock
 {
     [SerializeField] protected float resetTime = 5f;
     public Vector3 safePos;
+    private float originalDamping;
+    private Rigidbody rb;
 
     void Start()
     {
         safePos = transform.position;
+        rb = gameObject.GetComponent<Rigidbody>();
+        originalDamping = rb.linearDamping;
     }
 
     public override void Respawn()
     {
-        gameObject.GetComponent<Rigidbody>().linearDamping = 10;
+        rb.linearDamping = 10;
         Invoke(nameof(Return), resetTime);
     }
     private void Return()
     {
-        gameObject.GetComponent<Rigidbody>().linearDamping = 0;
+        rb.linearDamping = originalDamping;
         transform.position = safePos;
     }
 }
