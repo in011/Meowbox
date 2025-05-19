@@ -23,6 +23,7 @@ public class S_MovingPlatform : MonoBehaviour
         gameObject.GetComponent<S_MovingPlatform>().enabled = false;
         Invoke(nameof(TurnOnOff), 0.01f);
     }
+
     public void TurnOnOff()
     {
         gameObject.GetComponent<S_MovingPlatform>().enabled = true;

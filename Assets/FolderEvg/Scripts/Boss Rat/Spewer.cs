@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Spewer : MonoBehaviour
 {
+    public GameManager gameManager;
+
     [Header("Target Movement")]
     public Vector3 targetOffset = new Vector3(0f, 5f, 0f); // Насколько вверх двигать
     public float moveDuration = 2f;
@@ -106,7 +108,11 @@ public class Spewer : MonoBehaviour
             {
                 yield return new WaitForSeconds(moveDuration);
             }
-            Instantiate(prefabToSpawn, spawnLocation.transform.position, spawnLocation.transform.rotation);
+            Bullet bullet = Instantiate(prefabToSpawn, spawnLocation.transform.position, spawnLocation.transform.rotation).GetComponent<Bullet>();
+            if (bullet != null)
+            {
+                bullet.gameManager = gameManager;
+            }
             yield return new WaitForSeconds(spawnInterval);
         }
     }

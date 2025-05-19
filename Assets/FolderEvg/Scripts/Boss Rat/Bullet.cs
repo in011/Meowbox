@@ -2,17 +2,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    GameManager gameManager;
-    AudioManager audioManager;
+    public GameManager gameManager;
     public float speed = 5f;
     [Tooltip("Lifetime")]
     public float lifetime = 10f;
 
     void Start()
     {
-        audioManager = FindAnyObjectByType<AudioManager>();
-        gameManager = FindAnyObjectByType<GameManager>();
-
         Destroy(gameObject, lifetime);
     }
 
@@ -33,7 +29,7 @@ public class Bullet : MonoBehaviour
             gameManager.Player2Death();
             Debug.Log("Shot!");
         }
-        else if (other.gameObject != gameObject)
+        else 
         {
             Destroy(gameObject);
         }
