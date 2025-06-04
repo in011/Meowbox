@@ -6,7 +6,7 @@ public class DualButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
             IsPressed = true;
         }
@@ -14,7 +14,7 @@ public class DualButton : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
         {
             IsPressed = false;
         }
