@@ -25716,9 +25716,17 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7659046370488321783, guid: 4cee6acd241a5af4e8f701cdf708aa5f, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659046370488321783, guid: 4cee6acd241a5af4e8f701cdf708aa5f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9873a167fdbffde40949558b07573a14, type: 2}
+    - target: {fileID: 7659046370488321783, guid: 4cee6acd241a5af4e8f701cdf708aa5f, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f8db81b466401e6479a3c147d77a9a45, type: 2}
     - target: {fileID: 8163507046056732450, guid: 4cee6acd241a5af4e8f701cdf708aa5f, type: 3}
       propertyPath: m_Name
       value: PR_SM_RockBlock_Long
