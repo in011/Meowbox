@@ -10,7 +10,11 @@ public class DualButtonManager : MonoBehaviour
     public GameObject objectToSpawn;
     public Transform spawnPoint;
 
+    [Header("Object to Move")]
+    public MoveObject[] objectToMove;
+
     private bool hasSpawned = false;
+
 
     void Update()
     {
@@ -23,7 +27,17 @@ public class DualButtonManager : MonoBehaviour
 
     void SpawnObject()
     {
-        Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
+        if (objectToSpawn != null)
+        {
+            Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
+        }
+        if (objectToMove != null)
+        {
+            foreach(MoveObject obj in objectToMove)
+            {
+                obj.GoUp();
+            }
+        }
     }
 
     public void SpawnReset()
