@@ -1596,7 +1596,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1653,7 +1671,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2012,7 +2048,7 @@ MonoBehaviour:
   subtitleText: "\u0411\u0435\u0435\u0444\u0438\u0441\u0442\u043E\u0444\u0435\u043B\u044C:
     \u201C\u041D\u0443 \u0432\u043E\u0442 \u0438 \u0432\u0441\u0451, \u0440\u0435\u0431\u044F\u0442\u0430!
     \n\u0412\u043E\u0442 \u043C\u044B \u0438 \u0440\u0430\u0437\u0431\u043E\u0433\u0430\u2026\u201D  "
-  fontAsset: {fileID: 0}
+  fontAsset: {fileID: 11400000, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
   fontStyle: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
   underline: 0
@@ -2031,7 +2067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subtitleText: "\u0411\u0435\u0435\u0444\u0438\u0441\u0442\u043E\u0444\u0435\u043B\u044C:
     \u201C\u0412\u0435\u0441\u044C \u043C\u043E\u0439 \u043A\u0430\u043F\u0438\u0442\u0430\u043B!\u201D  "
-  fontAsset: {fileID: 0}
+  fontAsset: {fileID: 11400000, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
   fontStyle: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
   underline: 0
@@ -3382,7 +3418,7 @@ MonoBehaviour:
   subtitleText: "\u0411\u0435\u0435\u0444\u0438\u0441\u0442\u043E\u0444\u0435\u043B\u044C:
     \u201C\u041A\u0430\u043A \u044F \u0434\u043E\u043B\u0436\u0435\u043D \u043E\u0442\u0431\u0438\u0442\u044C
     \n\u0442\u0430\u043A\u0438\u0435 \u043F\u043E\u0442\u0435\u0440\u0438?..\u201D  "
-  fontAsset: {fileID: 0}
+  fontAsset: {fileID: 11400000, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
   fontStyle: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
   underline: 0
@@ -3928,7 +3964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subtitleText: "\u0411\u0435\u0435\u0444\u0438\u0441\u0442\u043E\u0444\u0435\u043B\u044C:
     \u201C\u0410 \u0433\u0434\u0435 \u043C\u043E\u0438 \u0440\u0435\u0431\u044F\u0442\u0430?\u201D  "
-  fontAsset: {fileID: 0}
+  fontAsset: {fileID: 11400000, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
   fontStyle: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
   underline: 0
@@ -5868,7 +5904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subtitleText: "\u0411\u0435\u0435\u0444\u0438\u0441\u0442\u043E\u0444\u0435\u043B\u044C:
     \u201C\u041D\u0435\u0435\u0435\u0442!\u201D  "
-  fontAsset: {fileID: 0}
+  fontAsset: {fileID: 11400000, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
   fontStyle: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
   underline: 0
@@ -5905,7 +5941,7 @@ MonoBehaviour:
   subtitleText: "\u0411\u0435\u0435\u0444\u0438\u0441\u0442\u043E\u0444\u0435\u043B\u044C:
     \u201C\u041D\u0443, \u0432 \u043A\u043E\u0432\u0440\u043E\u0432\u043E\u043C\n\u0431\u0438\u0437\u043D\u0435\u0441\u0435
     \u044F \u0435\u0449\u0451 \u043D\u0435 \u0440\u0430\u0431\u043E\u0442\u0430\u043B\u2026\u201D"
-  fontAsset: {fileID: 0}
+  fontAsset: {fileID: 11400000, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
   fontStyle: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
   underline: 0
@@ -6274,7 +6310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   subtitleText: "\u0427\u0451\u0440\u0442-\u0431\u0430\u0440\u0430\u0448\u0435\u043A:
     *\u043A\u0430\u0448\u043B\u044F\u0435\u0442*"
-  fontAsset: {fileID: 0}
+  fontAsset: {fileID: 11400000, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
   fontStyle: 2
   textColor: {r: 1, g: 1, b: 1, a: 1}
   underline: 0

@@ -39,7 +39,8 @@ public class SkipCutscene : MonoBehaviour
 
         if (!string.IsNullOrEmpty(nextSceneName))
         {
-            SceneManager.LoadScene(nextSceneName); // Загружаем следующую сцену
+            // SceneManager.LoadScene(nextSceneName); // Загружаем следующую сцену
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);            
         }
     }
 }

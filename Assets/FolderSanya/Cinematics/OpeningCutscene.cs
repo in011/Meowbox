@@ -17,6 +17,7 @@ public class IntroSceneLoader : MonoBehaviour
 
     void OnTimelineFinished(PlayableDirector pd)
     {
-        SceneManager.LoadScene(nextSceneName);
+        // SceneManager.LoadScene(nextSceneName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
