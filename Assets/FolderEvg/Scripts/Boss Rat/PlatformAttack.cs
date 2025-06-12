@@ -38,7 +38,7 @@ public class PlatformAttack : MonoBehaviour
     }
     private void AttackEnd()
     {
-        bossManager.free = true;
+        bossManager.StageB();
     }
     private void LadderDown()
     {

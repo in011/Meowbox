@@ -1189,6 +1189,8 @@ MonoBehaviour:
   bottleObject: {fileID: 13770129427954277, guid: 2007a3a9b84370b42b3d99db98d5f520, type: 3}
   heightAbovePlayer: 15
   delayBeforeSecondSpawn: 1
+  radius: 5
+  spawnCount: 6
 --- !u!114 &151870658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,8 +1204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 3
-  firstAttackTime: 3
-  free: 0
+  timeBetweenThrows: 4
+  firstAttackTime: 5
   platformScript: {fileID: 151870659}
   bulletScript: {fileID: 151870657}
   cauldrons:
@@ -3755,6 +3757,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cauldron
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6c38014152a62d046b81fc8c80d42784, type: 3}
+      propertyPath: m_TagString
+      value: Sacrifice
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4385,7 +4391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4609622470642541927, guid: 76c08c3d994c5754b9ee206f83bcceb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.41
+      value: -2.8100002
       objectReference: {fileID: 0}
     - target: {fileID: 4609622470642541927, guid: 76c08c3d994c5754b9ee206f83bcceb8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6694,6 +6700,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cauldron
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6c38014152a62d046b81fc8c80d42784, type: 3}
+      propertyPath: m_TagString
+      value: Sacrifice
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7692,7 +7702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4609622470642541927, guid: 76c08c3d994c5754b9ee206f83bcceb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.41
+      value: -2.8100002
       objectReference: {fileID: 0}
     - target: {fileID: 4609622470642541927, guid: 76c08c3d994c5754b9ee206f83bcceb8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9010,6 +9020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cauldron
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6c38014152a62d046b81fc8c80d42784, type: 3}
+      propertyPath: m_TagString
+      value: Sacrifice
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9134,7 +9148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9218193300481953754, guid: 4039869e3315e94448d94631f4315eca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.41
+      value: -2.8100002
       objectReference: {fileID: 0}
     - target: {fileID: 9218193300481953754, guid: 4039869e3315e94448d94631f4315eca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11028,7 +11042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9218193300481953754, guid: 4039869e3315e94448d94631f4315eca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.41
+      value: -2.8100002
       objectReference: {fileID: 0}
     - target: {fileID: 9218193300481953754, guid: 4039869e3315e94448d94631f4315eca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16622,7 +16636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9218193300481953754, guid: 4039869e3315e94448d94631f4315eca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.41
+      value: -2.8100002
       objectReference: {fileID: 0}
     - target: {fileID: 9218193300481953754, guid: 4039869e3315e94448d94631f4315eca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16828,7 +16842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4609622470642541927, guid: 76c08c3d994c5754b9ee206f83bcceb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.41
+      value: -2.81
       objectReference: {fileID: 0}
     - target: {fileID: 4609622470642541927, guid: 76c08c3d994c5754b9ee206f83bcceb8, type: 3}
       propertyPath: m_LocalPosition.z
