@@ -4,53 +4,35 @@ using System.Collections;
 public class BulletHell : MonoBehaviour
 {
     public GameManager gameManager;
+    public BossRatManager ratManager;
 
     [SerializeField] private Spewer[] spewerList;
-    public bool startFlag = false;
-    public bool stopFlag = false;
 
     [Header("Players")]
     public Transform player1;
     public Transform player2;
 
     [Header("Spawning")]
-    public bool flagBottle = false;
     public GameObject shadowObject;
     public GameObject bottleObject;
     public float heightAbovePlayer = 15f;
     public float delayBeforeSecondSpawn = 1f;
 
-    void Start()
+    public void StartSpew()
     {
-        
+        foreach (Spewer spewer in spewerList)
+        {
+            spewer.GoUp();
+        }
+        Invoke("StopSpew", 10f);
     }
-
-    void Update()
+    public void StopSpew()
     {
-        if (startFlag)
+        foreach (Spewer spewer in spewerList)
         {
-            foreach (Spewer spewer in spewerList)
-            {
-                spewer.GoUp();
-            }
-            startFlag = false;
+            spewer.GoDown();
         }
-
-        if (stopFlag)
-        {
-            foreach (Spewer spewer in spewerList)
-            {
-                spewer.GoDown();
-            }
-            stopFlag = false;
-        }
-
-        if (flagBottle)
-        {
-            SpawnBottle();
-
-            flagBottle = false;
-        }
+        ratManager.StageB();
     }
 
     public void SpawnBottle()

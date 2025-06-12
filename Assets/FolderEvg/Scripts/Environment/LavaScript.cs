@@ -18,10 +18,10 @@ public class LavaScript : MonoBehaviour
 
     void Update()
     {
-        Vector3 currentPosition = transform.position;
+        /*Vector3 currentPosition = transform.position;
         currentYPos += riseSpeed * Time.deltaTime;
 
-        transform.position = new Vector3(currentPosition.x, currentYPos, currentPosition.z);
+        transform.position = new Vector3(currentPosition.x, currentYPos, currentPosition.z);*/
     }
 
     private void OnTriggerEnter(Collider other)
