@@ -13,15 +13,32 @@ public class DualButtonManager : MonoBehaviour
     [Header("Object to Move")]
     public MoveObject[] objectToMove;
 
+    [Header("Affordances")]
+    public GameObject[] affordances;
+
     private bool hasSpawned = false;
+    private bool active = true;
 
 
     void Update()
     {
-        if (!hasSpawned && button1.IsPressed && button2.IsPressed)
+        if (active && !hasSpawned && button1.IsPressed && button2.IsPressed)
         {
             SpawnObject();
             hasSpawned = true;
+        }
+    }
+
+    public void Activate()
+    {
+        Debug.Log("Active");
+        active = true;
+        if(affordances != null)
+        {
+            foreach(GameObject gameObj in affordances)
+            {
+                gameObj.SetActive(true);
+            }
         }
     }
 

@@ -8,6 +8,7 @@ public class FallingSpikes : MonoBehaviour
 
     [SerializeField] private bool fallen = false;
     [SerializeField] private float scanDistance = 1f;
+    [SerializeField] public float destroyTime = 20f;
     bool m_HitDetect;
     RaycastHit m_Hit;
 
@@ -16,7 +17,7 @@ public class FallingSpikes : MonoBehaviour
         audioManager = FindAnyObjectByType<AudioManager>();
         gameManager = FindAnyObjectByType<GameManager>();
 
-        Destroy(gameObject, 20f);
+        Destroy(gameObject, destroyTime);
     }
 
     private void FixedUpdate()

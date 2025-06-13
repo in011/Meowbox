@@ -53,9 +53,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 05912efaca370b149b602a16bdd738c8, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f8db81b466401e6479a3c147d77a9a45, type: 2}
     - target: {fileID: 919132149155446097, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}
       propertyPath: m_Name
       value: PetrifiedCat
@@ -217,10 +225,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1602238644875344336, guid: 65291857192eae94fbcc3d3a287e884d, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1602238644875344336, guid: 65291857192eae94fbcc3d3a287e884d, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f8db81b466401e6479a3c147d77a9a45, type: 2}
     - target: {fileID: 919132149155446097, guid: 65291857192eae94fbcc3d3a287e884d, type: 3}
       propertyPath: m_Name
       value: gargoyle
       objectReference: {fileID: 0}
+    - target: {fileID: 8442510506162454399, guid: 65291857192eae94fbcc3d3a287e884d, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8442510506162454399, guid: 65291857192eae94fbcc3d3a287e884d, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f8db81b466401e6479a3c147d77a9a45, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

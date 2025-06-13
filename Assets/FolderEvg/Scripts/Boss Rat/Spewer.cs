@@ -68,7 +68,6 @@ public class Spewer : MonoBehaviour
 
     private IEnumerator MoveToPosition(Vector3 target, float duration)
     {
-        Debug.Log("Destination " + target);
         Vector3 start = transform.position;
         float elapsed = 0f;
 

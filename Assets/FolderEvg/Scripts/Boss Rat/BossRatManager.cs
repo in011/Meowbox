@@ -1,57 +1,112 @@
+using System;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class BossRatManager : MonoBehaviour
 {
+    public int HP = 3;
+    public float timeBetweenThrows = 4f;
+    bool stageA = true;
+
+    [SerializeField] float firstAttackTime = 3f;
+
+    [SerializeField] PlatformAttack platformScript;
+    [SerializeField] BulletHell bulletScript;
+
     [SerializeField] private CauldronFloor[] cauldrons;
     public bool startFlag = false;
     public bool stopFlag = false;
 
-    [SerializeField] private CauldronFloor[] ladderSteps;
-    [SerializeField] private S_MovingPlatform[] platforms;
-    public bool startLadder = false;
-    public bool stopLadder = false;
+    [SerializeField] DualButtonManager firstButtons;
+    [SerializeField] DualButtonManager secondButtons;
+    [SerializeField] DualButtonManager thirdButtons;
 
-    private void Update()
+    private void Start()
     {
-        if (startFlag)
-        {
-            foreach (CauldronFloor cauldron in cauldrons)
-            {
-                cauldron.GoUp();
-            }
-            startFlag = false;
-        }
+        Invoke("AttackStart", firstAttackTime);
+    }
 
-        if (stopFlag)
+    public void StageB()
+    {
+        stageA = false;
+        foreach (CauldronFloor cauldron in cauldrons)
         {
-            foreach (CauldronFloor cauldron in cauldrons)
-            {
-                cauldron.GoDown();
-            }
-            stopFlag = false;
+            cauldron.GoUp();
         }
+        switch (HP)
+        {
+            case > 2:
+                firstButtons.Activate();
+                // Invoke("ThrowBomb", 4f);
+                break;
 
-        if (startLadder)
-        {
-            foreach (CauldronFloor step in ladderSteps)
-            {
-                step.GoUp();
-            }
-            foreach (S_MovingPlatform platform in platforms)
-            {
-                platform.StartMoving();
-            }
-            startLadder = false;
-        }
+            case 2:
+                secondButtons.Activate();
+                Invoke("ThrowBomb", 4f);
+                break;
 
-        if (stopLadder)
-        {
-            foreach (CauldronFloor step in ladderSteps)
-            {
-                step.GoDown();
-            }
-            stopLadder = false;
+            case 1:
+                thirdButtons.Activate();
+                Invoke("ThrowBomb", 4f);
+                break;
+
+            case 0:
+                EndDialog();
+                break;
+
+            default:
+                Debug.Log("A: Wrong HP");
+                break;
         }
+    }
+
+    public void StageA()
+    {
+        stageA = true;
+        foreach (CauldronFloor cauldron in cauldrons)
+        {
+            cauldron.GoDown();
+        }
+        switch (HP)
+        {
+            case 2:
+                bulletScript.MassThrows();
+                break;
+
+            case 1:
+                platformScript.Platforms();
+                break;
+
+            case 0:
+                EndDialog();
+                break;
+
+            default:
+                Debug.Log("B: Wrong HP");
+                break;
+        }
+    }
+
+    private void EndDialog()
+    {
+        
+    }
+
+    private void ThrowBomb()
+    {
+        if(!stageA)
+        {
+            bulletScript.SpawnBottle();
+
+            Invoke("ThrowBomb", timeBetweenThrows);
+        }
+    }
+
+    private void AttackStart()
+    {
+        bulletScript.StartSpew();
+    }
+    private void PlatformsStart()
+    {
+        platformScript.Platforms();
     }
 }
