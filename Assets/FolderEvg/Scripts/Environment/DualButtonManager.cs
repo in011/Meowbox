@@ -31,7 +31,6 @@ public class DualButtonManager : MonoBehaviour
 
     public void Activate()
     {
-        Debug.Log("Active");
         active = true;
         if(affordances != null)
         {
@@ -41,12 +40,25 @@ public class DualButtonManager : MonoBehaviour
             }
         }
     }
+    public void Deactivate()
+    {
+        active = true;
+        if (affordances != null)
+        {
+            foreach (GameObject gameObj in affordances)
+            {
+                gameObj.SetActive(false);
+            }
+        }
+    }
 
     void SpawnObject()
     {
         if (objectToSpawn != null)
         {
             Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);
+
+            Invoke("Deactivate", 2);
         }
         if (objectToMove != null)
         {
