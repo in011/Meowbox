@@ -72,6 +72,27 @@ public class AbilityManager : MonoBehaviour
         isRock2 = true;
     }
 
+    public void BrakePetrification()
+    {
+        if (isRock1)
+        {
+            Vector3 restPos = petrifCat1.transform.position;
+            Quaternion restRot = petrifCat1.transform.rotation;
+            Destroy(petrifCat1);
+            Cat1Restore(restPos, restRot);
+        }
+        else
+        {
+            if (isRock2)
+            {
+                Vector3 restPos = petrifCat2.transform.position;
+                Quaternion restRot = petrifCat2.transform.rotation;
+                Destroy(petrifCat2);
+                Cat2Restore(restPos, restRot);
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

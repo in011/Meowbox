@@ -40,6 +40,7 @@ public class FallingSpikes : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         audioManager.PlaySFX(audioManager.fallInLava);
+        Debug.Log("hit");
 
         if (other.tag == "Player1")
         {
@@ -49,6 +50,15 @@ public class FallingSpikes : MonoBehaviour
         if (other.tag == "Player2")
         {
             gameManager.Player2Death();
+            Destroy(gameObject);
+        }
+        if (other.tag == "Block")
+        {
+            PetrifiedCat stoneCat;
+            if (other.TryGetComponent<PetrifiedCat>(out stoneCat))
+            {
+                stoneCat.GetHit(5);
+            }
             Destroy(gameObject);
         }
         if (other.tag == "Wall")

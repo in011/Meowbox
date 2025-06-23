@@ -22,11 +22,22 @@ public class Bullet : MonoBehaviour
         if (other.tag == "Player1")
         {
             gameManager.Player1Death();
-            Debug.Log("Shot!");
+            Destroy(gameObject);
         }
         else if (other.tag == "Player2")
         {
             gameManager.Player2Death();
+            Destroy(gameObject);
+        }
+        else if (other.tag == "Block")
+        {
+            PetrifiedCat stoneCat;
+            if (other.TryGetComponent<PetrifiedCat>(out stoneCat))
+            {
+                stoneCat.GetHit(1);
+                Debug.Log("stoneCat Hit!");
+            }
+            Destroy(gameObject);
             Debug.Log("Shot!");
         }
         else 

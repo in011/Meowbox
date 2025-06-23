@@ -159,7 +159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   petrificationResetTime: 5
+  HP: 5
   player2: 1
+  targetScale: {x: 110, y: 110, z: 110}
+  time: 0.25
 --- !u!4 &5271744295708602097 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3994d70c6f1b2454da00ea1e34404748, type: 3}

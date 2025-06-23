@@ -51,15 +51,23 @@ PrefabInstance:
     - target: {fileID: 717938374835110923, guid: 4d1fb1af86fa2054e8c02b0b9cda6df6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 911cd88bc0a8d12459db66da0fc144ae, type: 2}
+      objectReference: {fileID: 2100000, guid: 01884e5a90f51d0419be9aff6a37e391, type: 2}
     - target: {fileID: 919132149155446097, guid: 4d1fb1af86fa2054e8c02b0b9cda6df6, type: 3}
       propertyPath: m_Name
       value: SK_Chr_Cat_White_01
       objectReference: {fileID: 0}
     - target: {fileID: 1630794972795428178, guid: 4d1fb1af86fa2054e8c02b0b9cda6df6, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: 4d1fb1af86fa2054e8c02b0b9cda6df6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 911cd88bc0a8d12459db66da0fc144ae, type: 2}
+      objectReference: {fileID: 2100000, guid: 01884e5a90f51d0419be9aff6a37e391, type: 2}
+    - target: {fileID: 1630794972795428178, guid: 4d1fb1af86fa2054e8c02b0b9cda6df6, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b0c90432666cd6e45a750eb55f1842ae, type: 2}
     - target: {fileID: 3017433637765066385, guid: 4d1fb1af86fa2054e8c02b0b9cda6df6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
