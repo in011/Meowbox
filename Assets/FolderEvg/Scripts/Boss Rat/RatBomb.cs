@@ -3,6 +3,12 @@ using UnityEngine;
 public class RatBomb : MonoBehaviour
 {
     public float checkRadius = 5f;
+    public GameObject explosionVFX;
+    private Block blockScript;
+    private void Start()
+    {
+        gameObject.TryGetComponent<Block>(out blockScript);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,6 +19,8 @@ public class RatBomb : MonoBehaviour
             if (rb.linearVelocity.magnitude > 7.5f)
             {
                 CheckForSacrifice();
+                Instantiate(explosionVFX, gameObject.transform.position, Quaternion.identity);
+                blockScript.Return();
             }
         }
     }
@@ -33,6 +41,7 @@ public class RatBomb : MonoBehaviour
                 {
                     bossManager.HP -= 1;
                     bossManager.StageA();
+                    Instantiate(explosionVFX, gameObject.transform.position, Quaternion.identity);
                     Destroy(gameObject);
                 }
                 else

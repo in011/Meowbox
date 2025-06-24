@@ -21,7 +21,7 @@ public class Block : BaseBlock
         rb.linearDamping = lavaDamping;
         Invoke(nameof(Return), resetTime);
     }
-    private void Return()
+    public void Return()
     {
         rb.linearDamping = originalDamping;
         transform.position = safePos;
