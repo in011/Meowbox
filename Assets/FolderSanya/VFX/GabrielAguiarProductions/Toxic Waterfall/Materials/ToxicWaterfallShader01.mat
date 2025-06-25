@@ -58,7 +58,7 @@ Material:
     - _AlphaToMask: 0
     - _AmbientOcclusion: 0.177
     - _AmbientOcclusionNoisePower: 2
-    - _BaseNoiseAmount: 0.15
+    - _BaseNoiseAmount: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 0
     - _CastShadows: 1
@@ -81,9 +81,9 @@ Material:
     - _TransperencyMaskAmount: 0
     - _VoronoiAgitation: 1
     - _VoronoiAngleOffset: 1
-    - _VoronoiDistortionAmount: 0.075
+    - _VoronoiDistortionAmount: 0.0631
     - _VoronoiDistortionScale: 10
-    - _VoronoiPower: 5
+    - _VoronoiPower: 1
     - _VoronoiScale: 10.66
     - _WobbleAmount: 0.08
     - _WobbleFrequency: 4
@@ -95,11 +95,11 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 1
     m_Colors:
-    - _BaseColor: {r: 0.16078432, g: 0.5686275, b: 0.07058824, a: 1}
+    - _BaseColor: {r: 0.6189067, g: 1, b: 0.1273585, a: 1}
     - _Color: {r: 0.2217439, g: 0.95699996, b: 0.14004876, a: 1}
     - _NormalsNoiseSpeed: {r: 0, g: -0.75, b: 0, a: 0}
     - _NormalsNoiseTiling: {r: 1, g: 0.9, b: 0, a: 0}
-    - _VoronoiColor: {r: 2.102977, g: 5.2164755, b: 0.38235945, a: 1}
+    - _VoronoiColor: {r: 1.3735672, g: 9.298025, b: 0, a: 1}
     - _VoronoiRemap: {r: 0.05, g: 1, b: 0, a: 0}
     - _VoronoiSpeed: {r: 0, g: -0.66, b: 0, a: 0}
     - _VoronoiTiling: {r: 1.2, g: 0.6, b: 0, a: 0}
