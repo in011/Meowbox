@@ -34,17 +34,22 @@ public class FloatingText : MonoBehaviour
         dialogMenu.WakeUp();
 
         dialogMenu.dialogTMP.text = message;
-        /*
-        // Найти TextMeshProUGUI (UI-версия текста)
-        TextMeshProUGUI dialogText = dialogMenu.GetComponentInChildren<TextMeshProUGUI>();
-        if (dialogText == null)
+
+        // Найдём локальный SpriteRenderer
+        SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
+        if (sr == null || sr.sprite == null)
         {
-            Debug.LogWarning("FloatingText: не найден TextMeshProUGUI в DialogMenu!");
+            Debug.LogWarning("FloatingText: Не найден SpriteRenderer или sprite.");
             return;
         }
-
-        // Перенести текст
-        dialogText.text = message;*/
+        // Получим текстуру из спрайта
+        Texture2D texture = sr.sprite.texture;
+        if (texture == null)
+        {
+            Debug.LogWarning("FloatingText: У Sprite нет текстуры.");
+            return;
+        }
+        dialogMenu.face.texture = texture;
 
         gameObject.TryGetComponent<Animator>(out animator);
         transform.localPosition += TextOffset;
