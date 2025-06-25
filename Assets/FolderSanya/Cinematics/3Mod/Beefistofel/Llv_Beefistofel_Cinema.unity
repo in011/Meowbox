@@ -26895,7 +26895,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549481113}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -26908,7 +26908,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\u0411\u0435\u0435\u0444\u0438\u0441\u0442\u043E\u0444\u0435\u043B\u044C:
+    \u201C\u041A\u0430\u043A \u044F \u0434\u043E\u043B\u0436\u0435\u043D \u043E\u0442\u0431\u0438\u0442\u044C
+    \n\u0442\u0430\u043A\u0438\u0435 \u043F\u043E\u0442\u0435\u0440\u0438?..\u201D  "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
   m_sharedMaterial: {fileID: -4605985073167786823, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
@@ -56124,7 +56126,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 28, y: -383}
-  m_SizeDelta: {x: 428.8, y: 89.31}
+  m_SizeDelta: {x: 498.1, y: 89.31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1112095698
 MonoBehaviour:
@@ -56133,7 +56135,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112095696}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -63214,8 +63216,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248118840}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.13207704, y: 0, z: 0, w: 0.9912395}
-  m_LocalPosition: {x: 0, y: -3.34, z: -15.37}
+  m_LocalRotation: {x: -0.09584571, y: 0, z: 0, w: 0.9953962}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -111756,7 +111758,7 @@ PlayableDirector:
   - key: {fileID: 0}
     value: {fileID: 0}
   - key: {fileID: 8626723260908084484, guid: 65d1fedcab81bed418d021fe4f5a575b, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 549481116}
   - key: {fileID: 5671471337130188134, guid: 65d1fedcab81bed418d021fe4f5a575b, type: 2}
     value: {fileID: 1407096982}
   - key: {fileID: -6372432171460387274, guid: 65d1fedcab81bed418d021fe4f5a575b, type: 2}
