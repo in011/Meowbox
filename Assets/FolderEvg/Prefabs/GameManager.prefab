@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2755442846782528775}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -53,6 +53,8 @@ MonoBehaviour:
   player1Dead: 0
   player2: {fileID: 0}
   player2Dead: 0
+  resVFX: {fileID: 7427886510754158927, guid: 423534283775ac3419c3be92139e4926, type: 3}
+  playerRespawnTime: 3
   score: 0
   scoreNeeded: 1000
   portal: {fileID: 0}
@@ -74,8 +76,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
+  Camera1: {fileID: 0}
   abilityButton1: 304
   petrifiedPrefab1: {fileID: 4783719099900851275, guid: 2d6ad565903dba744bb1fb1098889c53, type: 3}
   player2: {fileID: 0}
+  Camera2: {fileID: 0}
   abilityButton2: 303
   petrifiedPrefab2: {fileID: 4783719099900851275, guid: 2d6ad565903dba744bb1fb1098889c53, type: 3}
