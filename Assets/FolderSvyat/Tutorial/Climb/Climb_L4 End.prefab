@@ -217,7 +217,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412\u043E\u0442 \u0438 \u0432\u0441\u0451!\n\n"
+  m_text: '.
+
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -359,8 +362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LastLine: 1
-  LifeTime: 0
-  TextOffset: {x: -5, y: 8, z: 0}
+  LifeTime: 0.1
+  TextOffset: {x: 0, y: 3, z: -5}
   RandomizeIntensity: {x: 0, y: 0, z: 0}
 --- !u!1 &8491257823449394547
 GameObject:
