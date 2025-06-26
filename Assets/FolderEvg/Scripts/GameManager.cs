@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject player2;
     private Moving player2Script;
     public bool player2Dead = false;
+    [SerializeField] private GameObject resVFX;
     [SerializeField] private float playerRespawnTime = 3f;
 
     [SerializeField] private int score = 0;
@@ -76,6 +77,7 @@ public class GameManager : MonoBehaviour
             player1Script.safePos = player2.transform.position;
         }
         player1.transform.position = player1Script.safePos;
+        Invoke(nameof(PortalOpen), playerRespawnTime - 1f); // ResetJump jumpCooldown       
         Invoke(nameof(RespawnPlayer1), playerRespawnTime); // ResetJump jumpCooldown       
         //StartCoroutine(Timer(5));
     }
@@ -97,10 +99,25 @@ public class GameManager : MonoBehaviour
             player2Script.safePos = player1.transform.position;
         }
         player2.transform.position = player2Script.safePos;
+        Invoke(nameof(PortalOpen), playerRespawnTime-1f); // ResetJump jumpCooldown       
         Invoke(nameof(RespawnPlayer2), playerRespawnTime); // ResetJump jumpCooldown       
         //StartCoroutine(Timer(5));
     }
 
+    private void PortalOpen()
+    {
+        Vector3 resPosition;
+        if (player1Dead)
+        {
+            resPosition = player1Script.safePos;
+        }
+        else
+        {
+            resPosition = player2Script.safePos;
+        }
+        GameObject port = Instantiate(resVFX, resPosition, gameObject.transform.rotation);
+        Destroy(port, 3f);
+    }
     private void RespawnPlayer1()
     {
         player1Dead = false;
