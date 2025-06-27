@@ -838,10 +838,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fb437abf0dba84a879735ebc008c3e, type: 3}
   m_Name: SubtitleClip(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
-  subtitleText: "\u041A\u0440\u044B\u0441\u0430: \u0422\u043E\u0447\u043D\u0435\u0435
+  subtitleText: "\u041A\u0440\u044B\u0441\u0430: \"\u0422\u043E\u0447\u043D\u0435\u0435
     \u0434\u0435\u043A\u043E\u0442\u0430\u043C\u0438\u043D\u0430\u0446\u0438\u0438,
     \u043D\u0430\u0432\u0435\u0440\u043D\u043E\u0435, \n\u0443\u0447\u0438\u0442\u044B\u0432\u0430\u044F,
-    \u043A\u0442\u043E \u0437\u0434\u0435\u0441\u044C\u2026"
+    \u043A\u0442\u043E \u0437\u0434\u0435\u0441\u044C\u2026\""
   fontAsset: {fileID: 11400000, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
   fontStyle: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
@@ -949,14 +949,14 @@ MonoBehaviour:
   m_Name: RecorderClip
   m_EditorClassIdentifier: 
   enabled: 1
-  take: 6
+  take: 4
   captureEveryNthFrame: 1
   fileNameGenerator:
     m_Path:
       m_Root: 5
       m_Leaf: Recordings
       m_ForceAssetFolder: 0
-      m_AbsolutePath: "F:/HSE_GD/01_Bak/03K/[Project]/CatsVSDevil/4 Mod/\u0421\u0446\u0435\u043D\u0430"
+      m_AbsolutePath: F:/HSE_GD/01_Bak/03K/[Project]/CatsVSDevil/4 Mod/Trailer/Base/Vid/Cutscene
     m_FileName: <Recorder>_<Take>
   encoderSettings:
     rid: 4163557584541319263
@@ -3364,7 +3364,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -3421,7 +3439,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -3448,13 +3484,49 @@ MonoBehaviour:
     m_BlendOutDuration: 1.0666666666666664
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -5218,7 +5290,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -7502,7 +7592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80fb437abf0dba84a879735ebc008c3e, type: 3}
   m_Name: SubtitleClip(Clone)(Clone)
   m_EditorClassIdentifier: 
-  subtitleText: "\u041A\u0440\u044B\u0441\u0430: \u0410? \u041A\u0442\u043E \u0437\u0434\u0435\u0441\u044C?!"
+  subtitleText: "\u041A\u0440\u044B\u0441\u0430: \"\u0410? \u041A\u0442\u043E \u0437\u0434\u0435\u0441\u044C?!\""
   fontAsset: {fileID: 11400000, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
   fontStyle: 0
   textColor: {r: 1, g: 1, b: 1, a: 1}
