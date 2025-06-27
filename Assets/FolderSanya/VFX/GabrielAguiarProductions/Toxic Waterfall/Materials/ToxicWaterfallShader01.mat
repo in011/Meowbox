@@ -76,18 +76,18 @@ Material:
     - _Soft_Particle: 2
     - _SrcBlend: 5
     - _Surface: 1
-    - _Transparency: 0.6
+    - _Transparency: 0.58
     - _TransparencyBaseAmount: 1
     - _TransperencyMaskAmount: 0
     - _VoronoiAgitation: 1
     - _VoronoiAngleOffset: 1
-    - _VoronoiDistortionAmount: 0.0631
+    - _VoronoiDistortionAmount: 0.002
     - _VoronoiDistortionScale: 10
-    - _VoronoiPower: 1
+    - _VoronoiPower: 1.25
     - _VoronoiScale: 10.66
     - _WobbleAmount: 0.08
-    - _WobbleFrequency: 4
-    - _WobbleHeight: 1
+    - _WobbleFrequency: 0
+    - _WobbleHeight: 0
     - _WobbleIntensity: 8
     - _WobbleSpeed: 16
     - _WorkflowMode: 1
@@ -95,13 +95,13 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 1
     m_Colors:
-    - _BaseColor: {r: 0.6189067, g: 1, b: 0.1273585, a: 1}
+    - _BaseColor: {r: 1, g: 0.4099019, b: 0, a: 1}
     - _Color: {r: 0.2217439, g: 0.95699996, b: 0.14004876, a: 1}
     - _NormalsNoiseSpeed: {r: 0, g: -0.75, b: 0, a: 0}
     - _NormalsNoiseTiling: {r: 1, g: 0.9, b: 0, a: 0}
-    - _VoronoiColor: {r: 1.3735672, g: 9.298025, b: 0, a: 1}
-    - _VoronoiRemap: {r: 0.05, g: 1, b: 0, a: 0}
-    - _VoronoiSpeed: {r: 0, g: -0.66, b: 0, a: 0}
+    - _VoronoiColor: {r: 12.413593, g: 9.910957, b: 0.6441016, a: 1}
+    - _VoronoiRemap: {r: -0.12, g: 0.57, b: 0, a: 0}
+    - _VoronoiSpeed: {r: 0, g: -0.06, b: 0, a: 0}
     - _VoronoiTiling: {r: 1.2, g: 0.6, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

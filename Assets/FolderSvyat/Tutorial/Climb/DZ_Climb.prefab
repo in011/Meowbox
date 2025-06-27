@@ -67,14 +67,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
+  restartable: 0
+  addNextLevelScore: 0
   QuestItemNeeded: 0
   ItemName: Key_0
-  restartable: 0
-  NextDialog: {fileID: 0}
+  ActivateObjects: []
+  DeactivateObjects: []
+  NextDialog:
+  - {fileID: 0}
   AbortDialogs: []
   TextQueuePrefabs:
   - {fileID: 7605736753965523953, guid: 312c28b6ac82c57478c08ad2d08adc94, type: 3}
-  - {fileID: 2737679248172092609, guid: f1de3ab7c0e36ac46a8e82cc6140ef44, type: 3}
-  - {fileID: 8011695128404755727, guid: 07b210bb40188f148b87fac5097711d0, type: 3}
+  - {fileID: 7605736753965523953, guid: 811c1a6c8ff953846906c50891d27663, type: 3}
+  - {fileID: 7605736753965523953, guid: c477f3de5de98774fa5bb8a396310c6a, type: 3}
   TextOffset: {x: 0, y: 3, z: -5}
   RandomizeIntensity: {x: 0, y: 0, z: 0}

@@ -9,6 +9,7 @@ public class DualButtonManager : MonoBehaviour
     [Header("Object to Spawn")]
     public GameObject objectToSpawn;
     public Transform spawnPoint;
+    public GameObject spawnDialog;
 
     [Header("Object to Move")]
     public MoveObject[] objectToMove;
@@ -54,6 +55,10 @@ public class DualButtonManager : MonoBehaviour
 
     void SpawnObject()
     {
+        if (spawnDialog != null)
+        {
+            spawnDialog.SetActive(true);
+        }
         if (objectToSpawn != null)
         {
             Instantiate(objectToSpawn, spawnPoint.position, spawnPoint.rotation);

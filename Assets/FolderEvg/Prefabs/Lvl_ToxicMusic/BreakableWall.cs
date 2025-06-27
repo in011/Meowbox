@@ -14,10 +14,12 @@ public class BreakableWall : MonoBehaviour
     {
         if (other.CompareTag("Block"))
         {
+            Debug.Log("Collision");
             Rigidbody rb = other.attachedRigidbody;
             if (rb.linearVelocity.magnitude > pushStr)
             {
                 //Instantiate(brokenWall, gameObject.transform);
+                Debug.Log("Disable");
                 gameObject.SetActive(false);
             }        
         }
