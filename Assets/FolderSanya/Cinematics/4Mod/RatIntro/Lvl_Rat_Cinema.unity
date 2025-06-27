@@ -7380,7 +7380,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 28, y: -383}
-  m_SizeDelta: {x: 317.5, y: 60}
+  m_SizeDelta: {x: 354.92, y: 89.31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &290106709
 MonoBehaviour:
@@ -7389,7 +7389,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290106707}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -10365,8 +10365,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412458475}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.39128163, y: -0.34666783, z: 0.16207412, w: 0.8369302}
-  m_LocalPosition: {x: 19.83, y: 31.04, z: -20.65}
+  m_LocalRotation: {x: -0.008981895, y: 0.9557187, z: -0.024535108, w: -0.29311973}
+  m_LocalPosition: {x: 2.313, y: -2.85, z: -29.722}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10455,11 +10455,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 45
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60.000004
   orthographic: 0
-  orthographic size: 10
+  orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -28953,7 +28953,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179458046}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -28966,7 +28966,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041A\u0440\u044B\u0441\u0430: \"\u041C\u043E\u044F \u0441\u043A\u043B\u044F\u043D\u043A\u0430!\""
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
   m_sharedMaterial: {fileID: -4605985073167786823, guid: 12caf14afa62b4d4791fff55cfea77b0, type: 2}
