@@ -20,6 +20,12 @@ public class BossRatManager : MonoBehaviour
     [SerializeField] DualButtonManager secondButtons;
     [SerializeField] DualButtonManager thirdButtons;
 
+    [SerializeField] GameObject dialButtons;
+    [SerializeField] GameObject dialCauldron1;
+    [SerializeField] GameObject dialCauldron2;
+    [SerializeField] GameObject dialCauldron3;
+    [SerializeField] GameObject dialEnd;
+
     private void Start()
     {
         Invoke("AttackStart", firstAttackTime);
@@ -35,6 +41,7 @@ public class BossRatManager : MonoBehaviour
         switch (HP)
         {
             case > 2:
+                dialButtons.SetActive(true);
                 firstButtons.Activate();
                 // Invoke("ThrowBomb", 4f);
                 break;
@@ -69,10 +76,12 @@ public class BossRatManager : MonoBehaviour
         switch (HP)
         {
             case 2:
+                dialCauldron1.SetActive(true);
                 bulletScript.MassThrows();
                 break;
 
             case 1:
+                dialCauldron2.SetActive(true);
                 platformScript.Platforms();
                 break;
 
@@ -88,7 +97,7 @@ public class BossRatManager : MonoBehaviour
 
     private void EndDialog()
     {
-        
+        dialEnd.SetActive(true);
     }
 
     private void ThrowBomb()
