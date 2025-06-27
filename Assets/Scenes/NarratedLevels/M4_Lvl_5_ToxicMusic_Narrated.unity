@@ -1361,7 +1361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2184530140477435980, guid: 3da9f11c4e52ce44b915899178685d32, type: 3}
       propertyPath: restartable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2184530140477435980, guid: 3da9f11c4e52ce44b915899178685d32, type: 3}
       propertyPath: TextOffset.y
@@ -1441,7 +1441,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5174229899388704906, guid: 3da9f11c4e52ce44b915899178685d32, type: 3}
       propertyPath: m_Size.z
-      value: 8
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174229899388704906, guid: 3da9f11c4e52ce44b915899178685d32, type: 3}
+      propertyPath: m_Center.z
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: 7400616496691351614, guid: 3da9f11c4e52ce44b915899178685d32, type: 3}
       propertyPath: m_Name
@@ -5113,16 +5117,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2184530140477435980, guid: 3da9f11c4e52ce44b915899178685d32, type: 3}
       propertyPath: TextQueuePrefabs.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2184530140477435980, guid: 3da9f11c4e52ce44b915899178685d32, type: 3}
       propertyPath: 'TextQueuePrefabs.Array.data[0]'
       value: 
-      objectReference: {fileID: 6788139599818739393, guid: db90f840e33873a4f83bc4bf86859966, type: 3}
+      objectReference: {fileID: 4965909272636316418, guid: b29473161fd60df41800ea0686d6c8ae, type: 3}
     - target: {fileID: 2184530140477435980, guid: 3da9f11c4e52ce44b915899178685d32, type: 3}
       propertyPath: 'TextQueuePrefabs.Array.data[1]'
       value: 
-      objectReference: {fileID: 1433209705216802290, guid: c8753be57dcb68c46846c4ca60a929c6, type: 3}
+      objectReference: {fileID: 4965909272636316418, guid: 369cc1d096e85e5489723423bf72871e, type: 3}
     - target: {fileID: 2184530140477435980, guid: 3da9f11c4e52ce44b915899178685d32, type: 3}
       propertyPath: 'TextQueuePrefabs.Array.data[2]'
       value: 
